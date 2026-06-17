@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # 1. หน้าเว็บ Portfolio
+  portfolio-web:
+    build: .
+    container_name: local_portfolio_web
+    ports:
+      - "80:80" 
+    networks:
+      - app_network
+    restart: always
+
+  # 2. ฐานข้อมูลมอนิเตอร์
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: local_prometheus
+    ports:                 # 🌟 เพิ่มบรรทัดนี้
+      - "9090:9090"        # 🌟 เพิ่มบรรทัดนี้
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - app_network
+
+  # 3. แดชบอร์ดแสดงผล
+  grafana:
+    image: grafana/grafana:latest
+    container_name: local_grafana
+    ports:
+      - "3000:3000" 
+    networks:
+      - app_network
+    depends_on:
+      - prometheus
+
+  # 4. ตัวดึงข้อมูลกินสเปก (CPU/RAM ของ Container)
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: local_cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
