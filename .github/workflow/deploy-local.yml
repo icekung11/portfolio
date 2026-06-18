@@ -1,0 +1,25 @@
+name: Local CI/CD with Testing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # 🧪 ด่านที่ 1: ตรวจสอบและบิลด์โค้ด
+  test-and-verify:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+
+  # 🚀 ด่านที่ 2: รัน Docker (ทำเมื่อผ่านด่าน 1 เท่านั้น)
+  deploy-to-docker:
+    runs-on: self-hosted
+    needs: test-and-verify 
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --build --remove-orphans
