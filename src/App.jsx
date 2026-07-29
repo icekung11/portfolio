@@ -2,7 +2,9 @@
 import { useState, useEffect } from "react";
 import { 
   FaJava, FaPython, FaLinux, FaNetworkWired, FaReact, 
-  FaGithub, FaInstagram, FaPhoneAlt, FaFolderPlus 
+  FaGithub, FaInstagram, FaPhoneAlt, FaFolderPlus,
+  FaAward, FaGraduationCap, FaArrowUp, FaTimes, FaExpand,
+  FaCheckCircle
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiJavascript, SiMaildotru 
@@ -16,9 +18,6 @@ import { db } from "./firebase";
 import { 
   collection, 
   addDoc, 
-  onSnapshot, 
-  query, 
-  orderBy, 
   serverTimestamp 
 } from "firebase/firestore";
 
@@ -48,59 +47,386 @@ const skillCategories = [
   }
 ];
 
-const projects = [
-  {
-    title: "Fourier Series Calculator & Plotter",
-    desc: "A Python desktop application built with Tkinter, NumPy, SciPy, and Matplotlib. It computes Fourier coefficients using numerical integration and dynamically visualizes the convergence of trigonometric series against original periodic functions, supporting both single and piecewise functions.",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
-    tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "Math Modeling"],
-    // เพิ่มส่วน links สำหรับแนบไฟล์
-    links: [
-      { label: "📄 รายงานฉบับเต็ม (PDF)", url: "/fourier_report.pdf" },
-      { label: "💻 Source Code (.py)", url: "/fourier_series.py" }
-    ]
+const skillNames = {
+  en: {
+    "Linux Systems": "Linux Systems",
+    "Networking": "Networking",
+    "Digital Logic Design": "Digital Logic Design",
+    "Fundamentals of Electronics": "Fundamentals of Electronics",
+    "Java": "Java",
+    "Python": "Python",
+    "JavaScript": "JavaScript",
+    "React": "React",
+    "Tailwind CSS": "Tailwind CSS"
   },
-  {
-    title: "DropHere: E-Waste Management",
-    desc: "An application concept designed to track and optimize electronic waste disposal locations. Integrated mapping and hardware life-cycle algorithms to help local communities and students manage scrap efficiently.",
-    image: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=600&auto=format&fit=crop&q=60",
-    tags: ["Android Studio", "Java", "Firebase", "System Design"]
+  th: {
+    "Linux Systems": "ระบบปฏิบัติการ Linux",
+    "Networking": "ระบบเครือข่าย",
+    "Digital Logic Design": "การออกแบบตรรกะดิจิทัล",
+    "Fundamentals of Electronics": "พื้นฐานอิเล็กทรอนิกส์",
+    "Java": "ภาษา Java",
+    "Python": "ภาษา Python",
+    "JavaScript": "ภาษา JavaScript",
+    "React": "ไลบรารี React",
+    "Tailwind CSS": "Tailwind CSS"
+  }
+};
+
+const projects = {
+  en: [
+    {
+      title: "Fourier Series Calculator & Plotter",
+      desc: "A Python desktop application built with Tkinter, NumPy, SciPy, and Matplotlib. It computes Fourier coefficients using numerical integration and dynamically visualizes the convergence of trigonometric series against original periodic functions, supporting both single and piecewise functions.",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
+      tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "Math Modeling"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: "/fourier_report.pdf" },
+        { label: "💻 Source Code (.py)", url: "/fourier_series.py" }
+      ]
+    },
+    {
+      title: "DropHere: E-Waste Management",
+      desc: "An application concept designed to track and optimize electronic waste disposal locations. Integrated mapping and hardware life-cycle algorithms to help local communities and students manage scrap efficiently.",
+      image: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=600&auto=format&fit=crop&q=60",
+      tags: ["Android Studio", "Java", "Firebase", "System Design"]
+    },
+    {
+      title: "Credit Risk Predictive ML Model",
+      desc: "Implemented and compared Logistic Regression and Support Vector Machine (SVM) algorithms using the German Credit dataset. Focused on log transformations and balancing high precision/recall metrics for imbalanced data analysis.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60",
+      tags: ["Python", "Machine Learning", "Data Science", "Scikit-Learn"]
+    },
+    {
+      title: "Transient Response Circuit Analyzer",
+      desc: "Developed a computational script using numerical methods to analyze and simulate Transient Responses in complex RL, RC, and RLC networks utilizing Kirchhoff's laws, Nodal/Mesh analysis, and matrix operations.",
+      image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60",
+      tags: ["Python", "Circuit Analysis", "Engineering Math"]
+    }
+  ],
+  th: [
+    {
+      title: "เครื่องคำนวณและวาดกราฟอนุกรมฟูเรียร์",
+      desc: "แอปพลิเคชันเดสก์ท็อป Python ที่พัฒนาขึ้นด้วย Tkinter, NumPy, SciPy และ Matplotlib คำนวณสัมประสิทธิ์อนุกรมฟูเรียร์ด้วยการหาปริพันธ์เชิงตัวเลขและแสดงภาพความสอดคล้องและการลู่เข้าของอนุกรมตรีโกณมิติเปรียบเทียบกับฟังก์ชันคาบดั้งเดิม รองรับทั้งฟังก์ชันเดี่ยวและฟังก์ชันเป็นช่วง",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
+      tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "การจำลองทางคณิตศาสตร์"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: "/fourier_report.pdf" },
+        { label: "💻 ซอร์สโค้ด (.py)", url: "/fourier_series.py" }
+      ]
+    },
+    {
+      title: "DropHere: การจัดการขยะอิเล็กทรอนิกส์",
+      desc: "แนวคิดแอปพลิเคชันที่ออกแบบมาเพื่อติดตามและเพิ่มประสิทธิภาพจุดทิ้งขยะอิเล็กทรอนิกส์ มีการผสานรวมแผนที่และอัลกอริทึมการคำนวณวงจรชีวิตของฮาร์ดแวร์เพื่อช่วยให้ชุมชนและนักศึกษาจัดการขยะได้อย่างคุ้มค่าและปลอดภัย",
+      image: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=600&auto=format&fit=crop&q=60",
+      tags: ["Android Studio", "Java", "Firebase", "การออกแบบระบบ"]
+    },
+    {
+      title: "แบบจำลอง ML ทำนายความเสี่ยงเครดิต",
+      desc: "พัฒนาและเปรียบเทียบอัลกอริทึมการถดถอยโลจิสติก (Logistic Regression) และซัปพอร์ตเวกเตอร์แมชชีน (SVM) โดยใช้ชุดข้อมูลสินเชื่อเยอรมัน เน้นที่การแปลงลอการิทึมและการปรับความแม่นยำและระดับการระลึกในชุดข้อมูลที่ไม่สมดุล",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60",
+      tags: ["Python", "การเรียนรู้ของเครื่อง", "วิทยาการข้อมูล", "Scikit-Learn"]
+    },
+    {
+      title: "เครื่องวิเคราะห์วงจรตอบสนองชั่วครู่",
+      desc: "พัฒนาสคริปต์คำนวณโดยใช้วิธีเชิงตัวเลขเพื่อวิเคราะห์และจำลองการตอบสนองชั่วครู่ (Transient Responses) ในวงจรเครือข่าย RL, RC และ RLC ที่มีความซับซ้อนตามกฎของ Kirchhoff การวิเคราะห์โหนด/เมช และการคำนวณเมทริกซ์",
+      image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60",
+      tags: ["Python", "การวิเคราะห์วงจร", "คณิตศาสตร์วิศวกรรม"]
+    }
+  ]
+};
+
+const certificates = {
+  en: [
+    {
+      id: "cert-linux",
+      title: "Linux Systems & Network Architecture",
+      issuer: "Systems Engineering Institute",
+      date: "2025",
+      image: "/cert_linux.jpg",
+      desc: "Course completion in Linux Administration basics, Shell Scripting, Network Concepts, and System Infrastructure fundamentals.",
+      tags: ["Linux", "Networking", "Systems Basics"]
+    },
+    {
+      id: "cert-python",
+      title: "Python Scientific Computing & Fourier Analysis",
+      issuer: "Engineering Computation Board",
+      date: "2025",
+      image: "/cert_python.jpg",
+      desc: "Course completion in numerical Fourier coefficient calculations, SciPy integration, and mathematical modeling.",
+      tags: ["Python", "SciPy", "Math Modeling"]
+    },
+    {
+      id: "cert-fullstack",
+      title: "Full Stack Web Application Architecture",
+      issuer: "Modern Web Engineering Academy",
+      date: "2026",
+      image: "/cert_fullstack.jpg",
+      desc: "Course completion in React application development, Vite tooling, Tailwind UI components, and Firebase database integration.",
+      tags: ["React", "Full Stack", "Firebase"]
+    },
+    {
+      id: "cert-circuits",
+      title: "Digital Logic Design & Transient Analysis",
+      issuer: "Computer Engineering Department",
+      date: "2025",
+      image: "/cert_circuits.jpg",
+      desc: "Course completion in Transient Response numerical simulation (RL, RC, RLC), Kirchhoff's laws, and digital logic gates.",
+      tags: ["Digital Logic", "Circuits", "Electronics"]
+    }
+  ],
+  th: [
+    {
+      id: "cert-linux",
+      title: "ระบบปฏิบัติการ Linux & โครงสร้างพื้นฐานเครือข่าย",
+      issuer: "สถาบันวิศวกรรมระบบและระบบเครือข่าย",
+      date: "2025",
+      image: "/cert_linux.jpg",
+      desc: "ใบรับรองการผ่านหลักสูตรเรียนรู้ระบบปฏิบัติการ Linux, Shell Scripting และพื้นฐานระบบเครือข่าย",
+      tags: ["Linux", "ระบบเครือข่าย", "วิศวกรรมระบบ"]
+    },
+    {
+      id: "cert-python",
+      title: "การประมวลผลคณิตศาสตร์ & อนุกรมฟูเรียร์ด้วย Python",
+      issuer: "สถาบันคำนวณและจำลองทางวิศวกรรม",
+      date: "2025",
+      image: "/cert_python.jpg",
+      desc: "ใบรับรองการผ่านหลักสูตรคำนวณสัมประสิทธิ์อนุกรมฟูเรียร์เชิงตัวเลขและการใช้งาน Python SciPy",
+      tags: ["Python", "SciPy", "คณิตศาสตร์วิศวกรรม"]
+    },
+    {
+      id: "cert-fullstack",
+      title: "สถาปัตยกรรมเว็บแอปพลิเคชัน Full Stack & React",
+      issuer: "สถาบันพัฒนาซอฟต์แวร์และเว็บสมัยใหม่",
+      date: "2026",
+      image: "/cert_fullstack.jpg",
+      desc: "ใบรับรองการผ่านหลักสูตรพัฒนาเว็บแอปพลิเคชันด้วย React, Vite, Tailwind CSS และ Firebase",
+      tags: ["React", "Full Stack", "Firebase"]
+    },
+    {
+      id: "cert-circuits",
+      title: "การออกแบบตรรกศาสตร์ดิจิทัล & วิเคราะห์วงจร",
+      issuer: "ภาควิชาวิศวกรรมคอมพิวเตอร์",
+      date: "2025",
+      image: "/cert_circuits.jpg",
+      desc: "ใบรับรองการผ่านหลักสูตรจำลองการตอบสนองชั่วครู่ (Transient Responses) และตรรกศาสตร์ดิจิทัล",
+      tags: ["ตรรกศาสตร์ดิจิทัล", "วิเคราะห์วงจร", "อิเล็กทรอนิกส์"]
+    }
+  ]
+};
+
+const translations = {
+  en: {
+    navAbout: "About",
+    navSkills: "Skills",
+    navProjects: "Projects",
+    navCerts: "Certificates",
+    navContact: "Contact",
+    navComments: "Guestbook",
+    heroSub: "Computer Engineering Student",
+    heroTitle: "Hi, I am",
+    heroName: "Kittithat Dokboua",
+    heroDesc: "A passionate developer and System Engineering enthusiast with foundational knowledge in both hardware infrastructure and scalable web applications. Driven by curiosity and a strong eagerness to learn, I enjoy exploring modern digital architectures and continuously improving my technical skills.",
+    heroViewWork: "View My Work",
+    heroTalk: "Let's Talk",
+    profileName: "Kittithat Dokboua (ICE)",
+    profileUni: "Srinakharinwirot University (SWU)",
+    profileSub: "Computer Engineering Student",
+    aboutTitle: "About Me",
+    aboutIntroTitle: "Introduction",
+    aboutIntroDesc: "Hello, I'm Kittithat. I am a passionate Developer and System Engineering enthusiast with a strong interest in Web Development, system design, and systems thinking. I thrive on learning new technologies and love building modern, scalable applications that balance clean code with robust system logic.",
+    aboutEduTitle: "Education",
+    aboutEduDegree: "Computer Engineering",
+    aboutEduUni: "Srinakharinwirot University",
+    aboutEduPeriod: "2025 - Present",
+    aboutIntTitle: "Interests",
+    aboutInterests: [
+      "Application Development",
+      "System Engineering (Cloud & Edge AI)",
+      "Linux & Networking",
+      "Electronics & Circuit Analysis",
+      "Digital Logic"
+    ],
+    skillsTitle: "Technical Skillset",
+    skillsCategories: {
+      "Core & Systems Engineering": "Core & Systems Engineering",
+      "Software & Web Development": "Software & Web Development"
+    },
+    projectsTitle: "Engineering Projects",
+    projectsSub: "Swipe horizontally to explore projects across software engineering, machine learning, and mathematical modeling.",
+    projectFilesTitle: "Project Files & Assets",
+    projectClose: "Close Details",
+    projectMoreTitle: "More to Come",
+    projectMoreDesc: "Developing future applications and core engineering systems.",
+    projectMoreBtn: "GitHub",
+    certsTitle: "Certificates & Coursework",
+    certsSub: "Official course completion certificates and academic achievements in Computer Engineering & Development.",
+    certsView: "View Certificate",
+    certModalClose: "Close Preview",
+    contactTitle: "Contact & Network",
+    contactEmail: "Email",
+    contactGithub: "GitHub",
+    contactInstagram: "Instagram",
+    contactPhone: "Phone",
+    guestbookTitle: "Guestbook",
+    guestbookNamePlaceholder: "Your Name",
+    guestbookMsgPlaceholder: "Leave a message...",
+    guestbookSendBtn: "Send Message",
+    guestbookSuccess: "Message sent successfully! (It will be saved privately in the database)",
+    footer: "© 2026 Kittithat Dokboua. All rights reserved.",
+    dogDogName: "Buddy 🐶 (ICE's AI Dog Helper)",
+    dogTips: [
+      "Woof! 🐶 Welcome to Kittithat (ICE)'s portfolio! Click me anytime for helpful tips!",
+      "ICE is a Computer Engineering student at SWU who loves learning both Hardware & Software! 💻⚙️",
+      "Scroll down to explore Fourier Calculator & E-Waste Management projects! 🚀",
+      "Check out ICE's Certificates in Linux, Python, React & Circuit Logic! 📜",
+      "Feel free to leave a friendly note in the Guestbook below! ✍️"
+    ],
+    backToTop: "Back to Top"
   },
-  {
-    title: "Credit Risk Predictive ML Model",
-    desc: "Implemented and compared Logistic Regression and Support Vector Machine (SVM) algorithms using the German Credit dataset. Focused on log transformations and balancing high precision/recall metrics for imbalanced data analysis.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60",
-    tags: ["Python", "Machine Learning", "Data Science", "Scikit-Learn"]
-  },
-  {
-    title: "Transient Response Circuit Analyzer",
-    desc: "Developed a computational script using numerical methods to analyze and simulate Transient Responses in complex RL, RC, and RLC networks utilizing Kirchhoff's laws, Nodal/Mesh analysis, and matrix operations.",
-    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60",
-    tags: ["Python", "Circuit Analysis", "Engineering Math"]
-  },
-];
+  th: {
+    navAbout: "เกี่ยวกับฉัน",
+    navSkills: "ทักษะ",
+    navProjects: "ผลงาน",
+    navCerts: "ใบประกาศนียบัตร",
+    navContact: "ติดต่อ",
+    navComments: "สมุดเยี่ยมชม",
+    heroSub: "นักศึกษาวิศวกรรมคอมพิวเตอร์",
+    heroTitle: "สวัสดีครับ ผมชื่อ",
+    heroName: "กิตติธัช ดอกบัว",
+    heroDesc: "นักพัฒนาที่มีความมุ่งมั่นและผู้สนใจในระบบวิศวกรรม (System Engineering) ที่มีพื้นฐานทั้งด้านโครงสร้างพื้นฐานฮาร์ดแวร์และเว็บแอปพลิเคชันที่พร้อมรองรับการขยายตัว ขับเคลื่อนด้วยความอยากรู้อยากเห็นและพร้อมเรียนรู้สิ่งใหม่ๆ อยู่เสมอ ผมชอบที่จะค้นหาและพัฒนาสถาปัตยกรรมดิจิทัลที่ทันสมัยเพื่อยกระดับทักษะความสามารถของตนเอง",
+    heroViewWork: "ดูผลงานของผม",
+    heroTalk: "พูดคุยกัน",
+    profileName: "กิตติธัช ดอกบัว (ไอซ์)",
+    profileUni: "มหาวิทยาลัยศรีนครินทรวิโรฒ (มศว)",
+    profileSub: "นักศึกษาวิศวกรรมคอมพิวเตอร์",
+    aboutTitle: "เกี่ยวกับฉัน",
+    aboutIntroTitle: "แนะนำตัว",
+    aboutIntroDesc: "สวัสดีครับ ผมกิตติทัศน์ ผมเป็นนักพัฒนาซอฟต์แวร์และผู้สนใจด้านระบบวิศวกรรมที่มีความหลงใหลในการพัฒนาเว็บ การออกแบบระบบ และการคิดเชิงระบบ ผมรักการเรียนรู้เทคโนโลยีใหม่ๆ และชอบสร้างแอปพลิเคชันที่ทันสมัย ทรงพลัง และยืดหยุ่น โดยมุ่งเน้นการเขียนโค้ดที่สะอาดควบคู่กับตรรกะระบบที่เสถียร",
+    aboutEduTitle: "ประวัติการศึกษา",
+    aboutEduDegree: "วิศวกรรมคอมพิวเตอร์",
+    aboutEduUni: "มหาวิทยาลัยศรีนครินทรวิโรฒ",
+    aboutEduPeriod: "2025 - ปัจจุบัน",
+    aboutIntTitle: "ความสนใจ",
+    aboutInterests: [
+      "การพัฒนาแอปพลิเคชัน",
+      "วิศวกรรมระบบ (Cloud & Edge AI)",
+      "Linux และระบบเครือข่าย",
+      "อิเล็กทรอนิกส์และการวิเคราะห์วงจร",
+      "ตรรกศาสตร์ดิจิทัล (Digital Logic)"
+    ],
+    skillsTitle: "ทักษะทางเทคนิค",
+    skillsCategories: {
+      "Core & Systems Engineering": "วิศวกรรมระบบและแกนหลัก",
+      "Software & Web Development": "การพัฒนาซอฟต์แวร์และเว็บ"
+    },
+    projectsTitle: "โครงการทางวิศวกรรม",
+    projectsSub: "เลื่อนในแนวนอนเพื่อสำรวจโครงการต่างๆ ทั้งวิศวกรรมซอฟต์แวร์, การเรียนรู้ของเครื่อง, และการสร้างแบบจำลองทางคณิตศาสตร์",
+    projectFilesTitle: "ไฟล์และข้อมูลโครงการ",
+    projectClose: "ปิด",
+    projectMoreTitle: "ผลงานเพิ่มเติมเร็วๆ นี้",
+    projectMoreDesc: "กำลังพัฒนาแอปพลิเคชันและระบบวิศวกรรมหลักอื่นๆ เพิ่มเติมในอนาคต",
+    projectMoreBtn: "กิตฮับ (GitHub)",
+    certsTitle: "ใบประกาศนียบัตร & วุฒิบัตร",
+    certsSub: "วุฒิบัตรและใบประกาศนียบัตรรับรองการเรียนรู้ทางวิชาการด้านวิศวกรรมคอมพิวเตอร์และการพัฒนาซอฟต์แวร์",
+    certsView: "ดูใบประกาศ",
+    certModalClose: "ปิดหน้าต่าง",
+    contactTitle: "ช่องทางการติดต่อ",
+    contactEmail: "อีเมล",
+    contactGithub: "กิตฮับ (GitHub)",
+    contactInstagram: "อินสตาแกรม (Instagram)",
+    contactPhone: "เบอร์โทรศัพท์",
+    guestbookTitle: "สมุดเยี่ยมชม",
+    guestbookNamePlaceholder: "ชื่อของคุณ",
+    guestbookMsgPlaceholder: "พิมพ์ข้อความที่นี่...",
+    guestbookSendBtn: "ส่งข้อความ",
+    guestbookSuccess: "ส่งข้อความเรียบร้อยแล้ว! (ข้อความจะถูกบันทึกอย่างปลอดภัยในฐานข้อมูล)",
+    footer: "© 2026 กิตติธัช ดอกบัว. สงวนลิขสิทธิ์ทั้งหมด",
+    dogDogName: "บัดดี้ 🐶 (โฮ่งน้อยผู้ช่วย)",
+    dogTips: [
+      "โฮ่ง! 🐶 ยินดีต้อนรับสู่พอร์ตโฟลิโอของพี่ไอซ์ครับ! คลิกที่ตัวผมเพื่อฟังคำแนะนำได้เลยนะ!",
+      "พี่ไอซ์เป็นนักศึกษาวิศวกรรมคอมพิวเตอร์ มศว ที่กำลังศึกษาและเรียนรู้ทั้ง Hardware และ Software ครับ! 💻⚙️",
+      "เลื่อนลงไปชมโครงการคำนวณอนุกรมฟูเรียร์และแอปจัดการขยะอิเล็กทรอนิกส์ได้เลยนะ โฮ่ง! 🚀",
+      "กดดูใบประกาศนียบัตร (Certificates) ของพี่ไอซ์ด้านล่างได้เลยครับ! 📜",
+      "อย่าลืมแวะเขียนข้อความทักทายในสมุดเยี่ยมชม (Guestbook) ให้พี่ไอซ์ด้วยน้า! ✍️"
+    ],
+    backToTop: "เลื่อนกลับขึ้นบน"
+  }
+};
 
 // ==========================================
 // COMPONENT ZONE
 // ==========================================
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [comments, setComments] = useState([]);
+  const [lang, setLang] = useState(() => {
+    if (typeof window !== "undefined" && typeof window.localStorage !== "undefined" && window.localStorage !== null) {
+      try {
+        return localStorage.getItem("portfolio-lang") || "en";
+      } catch (e) {
+        return "en";
+      }
+    }
+    return "en";
+  });
+
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(null);
+  const [selectedCertIndex, setSelectedCertIndex] = useState(null);
+  
+  // Form State
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Scroll Progress & Back to Top State
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Interactive Dog Mascot State
+  const [dogTipIndex, setDogTipIndex] = useState(0);
+  const [dogBubbleOpen, setDogBubbleOpen] = useState(true);
+
+  const selectedProject = selectedProjectIndex !== null ? projects[lang][selectedProjectIndex] : null;
+  const selectedCert = selectedCertIndex !== null ? certificates[lang][selectedCertIndex] : null;
+
+  // Handle Scroll Events for Progress & Back To Top Button
   useEffect(() => {
-    const q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const commentsArray = [];
-      querySnapshot.forEach((doc) => {
-        commentsArray.push({ id: doc.id, ...doc.data() });
-      });
-      setComments(commentsArray);
-    });
-    return () => unsubscribe();
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = windowHeight > 0 ? (totalScroll / windowHeight) * 100 : 0;
+      
+      setScrollProgress(scrollPercent);
+      setShowBackToTop(totalScroll > 280);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleLanguage = () => {
+    const nextLang = lang === "th" ? "en" : "th";
+    setLang(nextLang);
+    if (typeof window !== "undefined" && typeof window.localStorage !== "undefined" && window.localStorage !== null) {
+      try {
+        localStorage.setItem("portfolio-lang", nextLang);
+      } catch (e) {
+        // Silently ignore storage errors
+      }
+    }
+  };
+
+  const handleDogClick = () => {
+    setDogBubbleOpen(true);
+    setDogTipIndex((prev) => (prev + 1) % translations[lang].dogTips.length);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
   async function sendMessage() {
     if (!message.trim()) return;
@@ -112,6 +438,8 @@ export default function App() {
       });
       setName("");
       setMessage("");
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000);
     } catch (error) {
       console.error("Error adding document: ", error);
       alert("Failed to send message. Please try again.");
@@ -120,67 +448,135 @@ export default function App() {
 
   return (
     <div
+      id="top"
       className={
         darkMode
-          ? "overflow-x-hidden min-h-screen font-sans text-zinc-100 bg-[#09090b] transition-all duration-500"
-          : "overflow-x-hidden min-h-screen font-sans text-zinc-900 bg-[#fafafa] transition-all duration-500"
+          ? "overflow-x-hidden min-h-screen font-sans text-zinc-100 bg-[#09090b] transition-colors duration-300 relative"
+          : "overflow-x-hidden min-h-screen font-sans text-zinc-900 bg-[#fafafa] transition-colors duration-300 relative"
       }
     >
+      {/* Scroll Progress Bar at Top */}
+      <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-transparent pointer-events-none">
+        <div 
+          className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       {/* Background Glow */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-cyan-500/10 blur-[140px]" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/10 blur-[140px]" />
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className={`absolute top-0 left-0 w-[650px] h-[650px] blur-[150px] animate-pulse-glow ${darkMode ? "bg-cyan-500/10" : "bg-cyan-500/5"}`} />
+        <div className={`absolute bottom-0 right-0 w-[650px] h-[650px] blur-[150px] animate-pulse-glow ${darkMode ? "bg-purple-500/10" : "bg-purple-500/5"}`} />
       </div>
 
       {/* Navbar */}
-      <nav className={`flex flex-wrap justify-between items-center gap-4 px-6 md:px-12 py-5 border-b backdrop-blur-md sticky top-0 z-50 transition-colors ${darkMode ? "border-zinc-800/50 bg-[#09090b]/70" : "border-zinc-200 bg-[#fafafa]/75"}`}>
-        <h1 className="text-xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-          KITTITHAT.D
-        </h1>
-        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 font-medium text-sm w-full sm:w-auto">
-          <a href="#about" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>About</a>
-          <a href="#skills" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>Skills</a>
-          <a href="#projects" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>Projects</a>
-          <a href="#contact" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>Contact</a>
-          <a href="#comments" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>Comments</a>
-          
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`relative w-12 h-7 rounded-full transition-all duration-300 ml-2 ${darkMode ? "bg-cyan-500" : "bg-zinc-200"}`}
-          >
-            <div className={`absolute top-0.5 w-6 h-6 rounded-full transition-all duration-300 flex items-center justify-center text-xs ${darkMode ? "left-5.5 bg-zinc-950" : "left-0.5 bg-white shadow-sm"}`}>
-              {darkMode ? "🌙" : "☀️"}
-            </div>
-          </button>
+      <nav className={`px-6 md:px-12 py-4 border-b backdrop-blur-md sticky top-0 z-40 transition-colors ${darkMode ? "border-zinc-800/50 bg-[#09090b]/75 text-zinc-100" : "border-zinc-200 bg-[#fafafa]/85 text-zinc-900"}`}>
+        <div className="max-w-5xl mx-auto flex justify-between items-center w-full">
+          <a href="#top" className="text-xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 hover:opacity-90 transition">
+            KITTITHAT.D<span className="text-cyan-400">.</span>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-6 font-medium text-sm">
+            <a href="#about" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navAbout}</a>
+            <a href="#skills" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navSkills}</a>
+            <a href="#projects" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navProjects}</a>
+            <a href="#certificates" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navCerts}</a>
+            <a href="#contact" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navContact}</a>
+            <a href="#comments" className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navComments}</a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all border ${
+                darkMode 
+                  ? "border-zinc-800 text-zinc-300 bg-zinc-900/50 hover:border-cyan-500 hover:text-cyan-400" 
+                  : "border-zinc-300 text-zinc-700 bg-white hover:border-cyan-600 hover:text-cyan-600 shadow-sm"
+              }`}
+              title={lang === "th" ? "Switch to English" : "เปลี่ยนเป็นภาษาไทย"}
+            >
+              <span className={lang === "th" ? "text-cyan-500 font-extrabold" : ""}>TH</span>
+              <span className="text-zinc-400">/</span>
+              <span className={lang === "en" ? "text-cyan-500 font-extrabold" : ""}>EN</span>
+            </button>
+
+            {/* Dark Mode Switcher */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className={`relative w-12 h-7 rounded-full transition-all duration-300 ${darkMode ? "bg-cyan-500" : "bg-zinc-300"}`}
+              title="Toggle theme"
+            >
+              <div className={`absolute top-0.5 w-6 h-6 rounded-full transition-all duration-300 flex items-center justify-center text-xs ${darkMode ? "left-5.5 bg-zinc-950 text-white" : "left-0.5 bg-white text-zinc-900 shadow-sm"}`}>
+                {darkMode ? "🌙" : "☀️"}
+              </div>
+            </button>
+
+            {/* Mobile Menu Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`p-2 rounded-lg md:hidden transition-colors ${darkMode ? "text-zinc-400 hover:bg-zinc-900" : "text-zinc-600 hover:bg-zinc-100"}`}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {mobileMenuOpen && (
+          <div className={`md:hidden mt-4 pt-4 border-t flex flex-col gap-3.5 font-medium text-sm ${darkMode ? "border-zinc-800/50" : "border-zinc-200"}`}>
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navAbout}</a>
+            <a href="#skills" onClick={() => setMobileMenuOpen(false)} className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navSkills}</a>
+            <a href="#projects" onClick={() => setMobileMenuOpen(false)} className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navProjects}</a>
+            <a href="#certificates" onClick={() => setMobileMenuOpen(false)} className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navCerts}</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navContact}</a>
+            <a href="#comments" onClick={() => setMobileMenuOpen(false)} className={`transition-colors ${darkMode ? "text-zinc-400 hover:text-cyan-400" : "text-zinc-600 hover:text-cyan-600"}`}>{translations[lang].navComments}</a>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative max-w-5xl mx-auto px-6 md:px-12 py-20 lg:py-28 grid md:grid-cols-5 gap-12 items-center">
-        <div className="md:col-span-3 text-left">
-          <p className="text-cyan-500 font-bold uppercase tracking-[4px] text-xs mb-3">
-            Computer Engineering Student
-          </p>
+      <section className="relative max-w-5xl mx-auto px-6 md:px-12 py-10 md:py-20 lg:py-24 grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+        <div className="md:col-span-3 text-center md:text-left">
+          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-4 border ${darkMode ? "bg-cyan-500/10 border-cyan-500/20 text-cyan-400" : "bg-cyan-50 border-cyan-200 text-cyan-700"}`}>
+            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+            {translations[lang].heroSub}
+          </div>
           <h1 className={`text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15] ${darkMode ? "text-zinc-50" : "text-zinc-900"}`}>
-            Hi, I am <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-              Kittithat Dokboua
+            {translations[lang].heroTitle} <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500">
+              {translations[lang].heroName}
             </span>
           </h1>
-          <p className={`mt-5 text-base leading-relaxed max-w-xl ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-           A passionate developer and System Engineering enthusiast with foundational knowledge in both hardware infrastructure and scalable web applications. Driven by curiosity and a strong eagerness to learn, I enjoy exploring modern digital architectures and continuously improving my technical skills.
+          <p className={`mt-5 text-base leading-relaxed max-w-xl mx-auto md:mx-0 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+           {translations[lang].heroDesc}
           </p>
-          <div className="mt-8 flex gap-4 text-sm font-semibold">
-            <a href="#projects" className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:opacity-95 transition shadow-sm">
-              View My Work
+
+          {/* Hero Action Badges */}
+          <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-2">
+            <span className={`text-[11px] font-semibold px-3 py-1 rounded-lg border ${darkMode ? "bg-zinc-900/60 border-zinc-800 text-zinc-300" : "bg-white border-zinc-200 text-zinc-700 shadow-sm"}`}>Computer Engineering Student</span>
+            <span className={`text-[11px] font-semibold px-3 py-1 rounded-lg border ${darkMode ? "bg-zinc-900/60 border-zinc-800 text-zinc-300" : "bg-white border-zinc-200 text-zinc-700 shadow-sm"}`}>Web Development Learner</span>
+            <span className={`text-[11px] font-semibold px-3 py-1 rounded-lg border ${darkMode ? "bg-zinc-900/60 border-zinc-800 text-zinc-300" : "bg-white border-zinc-200 text-zinc-700 shadow-sm"}`}>Digital Logic</span>
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4 text-sm font-semibold">
+            <a href="#projects" className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:opacity-95 transition shadow-sm text-center">
+              {translations[lang].heroViewWork}
             </a>
-            <a href="#contact" className={`px-5 py-3 rounded-xl border transition-colors ${darkMode ? "border-zinc-800 text-zinc-300 hover:bg-zinc-900/50" : "border-zinc-200 text-zinc-700 hover:bg-zinc-100"}`}>
-              Let's Talk
+            <a href="#certificates" className={`px-5 py-3 rounded-xl border transition-colors text-center ${darkMode ? "border-zinc-800 text-zinc-300 hover:bg-zinc-900/50" : "border-zinc-200 text-zinc-700 hover:bg-zinc-100 shadow-sm"}`}>
+              {translations[lang].navCerts}
             </a>
           </div>
         </div>
 
-        <div className="md:col-span-2 flex justify-center">
+        <div className="md:col-span-2 flex justify-center order-first md:order-last">
           <div className={`relative w-full max-w-[270px] p-3 rounded-[24px] border ${darkMode ? "bg-zinc-900/40 border-zinc-800/80" : "bg-white border-zinc-200 shadow-sm"}`}>
             <img
               src="/profile.jpg"
@@ -188,12 +584,12 @@ export default function App() {
               className="w-full h-[320px] object-cover rounded-[16px]"
             />
             <div className="mt-3.5 text-center">
-              <h3 className={`text-lg font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>Kittithat Dokboua (ICE)</h3>
-              <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-350" : "text-zinc-350"}`}>
-                Srinakharinwirot University (SWU) 
+              <h3 className={`text-lg font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].profileName}</h3>
+              <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
+                {translations[lang].profileUni} 
               </p>
-              <p className={`text-xs ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
-                Computer Engineering Student
+              <p className={`text-xs ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
+                {translations[lang].profileSub}
               </p>
             </div>
           </div>
@@ -202,34 +598,35 @@ export default function App() {
 
       {/* About Section */}
       <section id="about" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
-        <h2 className={`text-2xl font-bold tracking-tight mb-8 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>About Me</h2>
+        <h2 className={`text-2xl font-bold tracking-tight mb-8 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].aboutTitle}</h2>
+
         <div className="grid md:grid-cols-3 gap-6">
           <div className={`p-6 rounded-2xl border ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200/80 shadow-sm"}`}>
-            <h3 className="text-base font-bold text-cyan-400 mb-3">Introduction</h3>
+            <h3 className="text-base font-bold text-cyan-400 mb-3">{translations[lang].aboutIntroTitle}</h3>
             <p className={`leading-relaxed text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-             "Hello, I'm Kittithat. I am a passionate Developer and System Engineering enthusiast with a strong interest in Web Development, system design, and systems thinking. I thrive on learning new technologies and love building modern, scalable applications that balance clean code with robust system logic."
+             {translations[lang].aboutIntroDesc}
             </p>
           </div>
 
           <div className={`p-6 rounded-2xl border ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200/80 shadow-sm"}`}>
-            <h3 className="text-base font-bold text-cyan-400 mb-3">Education</h3>
+            <h3 className="text-base font-bold text-cyan-400 mb-3">{translations[lang].aboutEduTitle}</h3>
             <div className={`space-y-4 leading-relaxed text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
               <div>
-                <h4 className={`font-semibold ${darkMode ? "text-zinc-200" : "text-zinc-800"}`}>Computer Engineering</h4>
-                <p>Srinakharinwirot University</p>
-                <p className="text-xs mt-1 opacity-60">2025 - Present</p>
+                <h4 className={`font-semibold ${darkMode ? "text-zinc-200" : "text-zinc-800"}`}>{translations[lang].aboutEduDegree}</h4>
+                <p>{translations[lang].aboutEduUni}</p>
+                <p className="text-xs mt-1 opacity-60">{translations[lang].aboutEduPeriod}</p>
               </div>
             </div>
           </div>
 
           <div className={`p-6 rounded-2xl border ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200/80 shadow-sm"}`}>
-            <h3 className="text-base font-bold text-cyan-400 mb-3">Interests</h3>
+            <h3 className="text-base font-bold text-cyan-400 mb-3">{translations[lang].aboutIntTitle}</h3>
             <ul className={`space-y-2.5 text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
-              <li>• Application Development</li>
-              <li>• System Engineering (Cloud & Edge AI)</li>
-              <li>• Linux & Networking</li>
-              <li>• Electronics & Circuit Analysis</li>
-              <li>• Digital Logic</li>
+              {translations[lang].aboutInterests.map((interest, idx) => (
+                <li key={idx} className="flex items-center gap-2">
+                  <span className="text-cyan-400">•</span> {interest}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -238,13 +635,13 @@ export default function App() {
       {/* Skills Section */}
       <section id="skills" className="max-w-5xl mx-auto px-6 md:px-12 py-16">
         <h2 className={`text-2xl font-bold tracking-tight mb-8 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
-          Technical Skillset
+          {translations[lang].skillsTitle}
         </h2>
         <div className="space-y-8">
           {skillCategories.map((category, catIdx) => (
             <div key={catIdx}>
               <h3 className={`text-xs uppercase tracking-widest font-bold mb-3.5 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
-                {category.title}
+                {translations[lang].skillsCategories[category.title] || category.title}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {category.list.map((skill, index) => (
@@ -255,7 +652,9 @@ export default function App() {
                     <div className="text-2xl transform group-hover:scale-105 transition duration-300 shrink-0">
                       {skill.icon}
                     </div>
-                    <span className={`text-xs font-semibold truncate ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>{skill.name}</span>
+                    <span className={`text-xs font-semibold truncate ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>
+                      {skillNames[lang][skill.name] || skill.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -266,16 +665,16 @@ export default function App() {
 
       {/* Projects Section */}
       <section id="projects" className="max-w-5xl mx-auto px-6 md:px-12 py-16">
-        <h2 className={`text-2xl font-bold tracking-tight mb-2 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>Engineering Projects</h2>
+        <h2 className={`text-2xl font-bold tracking-tight mb-2 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].projectsTitle}</h2>
         <p className={`text-xs mb-8 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
-          Swipe horizontally to explore projects across software engineering, machine learning, and mathematical modeling.
+          {translations[lang].projectsSub}
         </p>
         
         <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-thin snap-x snap-mandatory">
-          {projects.map((project, index) => (
+          {projects[lang].map((project, index) => (
             <div
               key={index}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => setSelectedProjectIndex(index)}
               className={
                 darkMode
                   ? "min-w-[290px] md:min-w-[380px] bg-zinc-900/20 border border-zinc-850 rounded-2xl p-5 hover:border-cyan-500 transition cursor-pointer flex flex-col justify-between snap-start"
@@ -310,15 +709,15 @@ export default function App() {
             className={`min-w-[240px] rounded-2xl border border-dashed flex flex-col items-center justify-center text-center p-5 transition snap-start group ${
               darkMode 
                 ? "bg-gradient-to-b from-transparent to-cyan-500/5 border-zinc-800 hover:border-cyan-500" 
-                : "bg-gradient-to-b from-transparent to-cyan-500/5 border-zinc-300 hover:border-cyan-500"
+                : "bg-gradient-to-b from-transparent to-cyan-500/5 border-zinc-300 hover:border-cyan-500 shadow-sm"
             }`}
           >
             <div className="text-3xl text-cyan-400 mb-3 transform group-hover:translate-y-[-2px] transition duration-300">
               <FaFolderPlus />
             </div>
-            <h3 className={`text-base font-bold ${darkMode ? "text-zinc-200" : "text-zinc-800"}`}>More to Come</h3>
+            <h3 className={`text-base font-bold ${darkMode ? "text-zinc-200" : "text-zinc-800"}`}>{translations[lang].projectMoreTitle}</h3>
             <p className={`text-[11px] max-w-[160px] leading-relaxed mb-4 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
-              Developing future applications and core engineering systems.
+              {translations[lang].projectMoreDesc}
             </p>
             <a 
               href="https://github.com" 
@@ -326,20 +725,129 @@ export default function App() {
               rel="noreferrer"
               className="text-xs px-3.5 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/20 hover:bg-cyan-500 hover:text-white transition-colors"
             >
-              GitHub
+              {translations[lang].projectMoreBtn}
             </a>
           </div>
         </div>
       </section>
 
-      {/* Popup Details Modal */}
+      {/* Certificates Section */}
+      <section id="certificates" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">
+              <FaAward /> Credentials
+            </div>
+            <h2 className={`text-2xl font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].certsTitle}</h2>
+          </div>
+          <p className={`text-xs max-w-md ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            {translations[lang].certsSub}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {certificates[lang].map((cert, index) => (
+            <div 
+              key={cert.id}
+              onClick={() => setSelectedCertIndex(index)}
+              className={`rounded-2xl border overflow-hidden transition group cursor-pointer flex flex-col justify-between ${
+                darkMode 
+                  ? "bg-zinc-900/30 border-zinc-800/80 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/5" 
+                  : "bg-white border-zinc-200 shadow-sm hover:border-cyan-500"
+              }`}
+            >
+              <div>
+                <div className="relative h-44 w-full overflow-hidden bg-zinc-950">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition" />
+                  <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-bold text-cyan-300 border border-cyan-500/20">
+                    {cert.date}
+                  </div>
+                  <div className="absolute bottom-3 left-3 text-white text-xs font-bold flex items-center gap-1">
+                    <FaCheckCircle className="text-cyan-400" /> {cert.issuer}
+                  </div>
+                </div>
+
+                <div className="p-4">
+                  <h3 className={`text-sm font-bold leading-snug mb-2 line-clamp-2 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
+                    {cert.title}
+                  </h3>
+                  <p className={`text-[11px] leading-relaxed line-clamp-3 mb-3 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                    {cert.desc}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 pt-0 flex items-center justify-between">
+                <div className="flex gap-1 overflow-hidden">
+                  {cert.tags.slice(0, 2).map((t, idx) => (
+                    <span key={idx} className={`text-[9px] px-2 py-0.5 rounded font-medium ${darkMode ? "bg-zinc-800/50 text-zinc-400" : "bg-zinc-100 text-zinc-600"}`}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <span className="text-xs font-semibold text-cyan-400 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                  <FaExpand className="text-[10px]" /> {translations[lang].certsView}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Certificate Lightbox Modal Preview */}
+      {selectedCert && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className={`relative rounded-2xl w-full max-w-3xl border overflow-hidden shadow-2xl flex flex-col ${darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-100" : "bg-white border-zinc-200 text-zinc-900"}`}>
+            <div className={`flex justify-between items-center p-4 border-b ${darkMode ? "border-zinc-800/60" : "border-zinc-200"}`}>
+              <div className="flex items-center gap-2">
+                <FaAward className="text-cyan-400 text-lg" />
+                <div>
+                  <h3 className="text-sm font-bold">{selectedCert.title}</h3>
+                  <p className={`text-[10px] ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>{selectedCert.issuer} ({selectedCert.date})</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setSelectedCertIndex(null)}
+                className={`p-1.5 rounded-lg transition ${darkMode ? "bg-zinc-800/50 text-zinc-400 hover:text-white hover:bg-zinc-800" : "bg-zinc-100 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200"}`}
+              >
+                <FaTimes />
+              </button>
+            </div>
+
+            <div className="p-4 flex items-center justify-center bg-black/40">
+              <img 
+                src={selectedCert.image} 
+                alt={selectedCert.title} 
+                className="max-h-[60vh] w-auto object-contain rounded-lg border border-zinc-800 shadow-md"
+              />
+            </div>
+
+            <div className={`p-4 flex justify-between items-center border-t text-xs ${darkMode ? "border-zinc-800/60" : "border-zinc-200"}`}>
+              <p className={`max-w-md ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>{selectedCert.desc}</p>
+              <button
+                onClick={() => setSelectedCertIndex(null)}
+                className="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold hover:opacity-90 transition shrink-0 shadow-sm"
+              >
+                {translations[lang].certModalClose}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Popup Project Details Modal */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className={`rounded-2xl w-full max-w-2xl max-h-[80vh] border flex flex-col md:flex-row overflow-hidden shadow-xl ${darkMode ? "bg-[#0c0c0e] border-zinc-800" : "bg-white border-zinc-200"}`}>
-            <div className="md:w-1/2 p-4 flex items-center justify-center bg-black/5">
-              <img src={selectedProject.image} alt={selectedProject.title} className="max-h-[200px] md:max-h-[300px] w-full object-cover rounded-xl" />
+          <div className={`rounded-2xl w-full max-w-2xl max-h-[90vh] md:max-h-[80vh] border flex flex-col md:flex-row overflow-hidden shadow-xl ${darkMode ? "bg-[#0c0c0e] border-zinc-800" : "bg-white border-zinc-200"}`}>
+            <div className="md:w-1/2 p-4 flex items-center justify-center bg-black/5 shrink-0">
+              <img src={selectedProject.image} alt={selectedProject.title} className="max-h-[160px] md:max-h-[300px] w-full object-cover rounded-xl" />
             </div>
-            <div className="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
+            <div className="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto min-h-0">
               <div>
                 <h2 className={`text-xl font-bold tracking-tight mb-2.5 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{selectedProject.title}</h2>
                 <p className={`text-xs leading-relaxed ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
@@ -353,10 +861,9 @@ export default function App() {
                   ))}
                 </div>
 
-                {/* 📌 จุดที่เพิ่มเข้ามา: ปุ่มกดดาวน์โหลด/ดูไฟล์ */}
                 {selectedProject.links && (
                   <div className={`mt-5 pt-5 border-t ${darkMode ? "border-zinc-800" : "border-zinc-100"}`}>
-                    <h4 className={`text-[10px] uppercase font-bold tracking-wider mb-2.5 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>Project Files & Assets</h4>
+                    <h4 className={`text-[10px] uppercase font-bold tracking-wider mb-2.5 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].projectFilesTitle}</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.links.map((link, i) => (
                         <a 
@@ -364,7 +871,11 @@ export default function App() {
                           href={link.url} 
                           target="_blank" 
                           rel="noreferrer"
-                          className="flex items-center gap-1.5 text-[11px] px-3.5 py-2 rounded-lg bg-cyan-500/10 text-cyan-400 font-bold border border-cyan-500/20 hover:bg-cyan-500 hover:text-white transition-colors"
+                          className={`flex items-center gap-1.5 text-[11px] px-3.5 py-2 rounded-lg font-bold border transition-colors ${
+                            darkMode 
+                              ? "bg-cyan-500/10 text-cyan-400 border-cyan-500/20 hover:bg-cyan-500 hover:text-white" 
+                              : "bg-cyan-50 text-cyan-700 border-cyan-200 hover:bg-cyan-500 hover:text-white"
+                          }`}
                         >
                           {link.label}
                         </a>
@@ -375,10 +886,10 @@ export default function App() {
 
               </div>
               <button
-                onClick={() => setSelectedProject(null)}
+                onClick={() => setSelectedProjectIndex(null)}
                 className="mt-6 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-2 rounded-lg font-bold text-xs w-fit self-end hover:opacity-95 transition shadow-sm"
               >
-                Close Details
+                {translations[lang].projectClose}
               </button>
             </div>
           </div>
@@ -386,13 +897,13 @@ export default function App() {
       )}
 
       {/* Contact Section */}
-      <section id="contact" className="max-w-5xl mx-auto px-6 md:px-12 py-16">
-        <h2 className={`text-2xl font-bold tracking-tight mb-6 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>Contact & Network</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section id="contact" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
+        <h2 className={`text-2xl font-bold tracking-tight mb-6 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].contactTitle}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <div className={`p-4 rounded-xl border transition-colors hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-[#ea4335] mb-1.5"><SiMaildotru /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>Email</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactEmail}</span>
             </div>
             <a href="mailto:kittithat8673@gmail.com" className={`text-xs font-semibold hover:underline break-all mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>kittithat8673@gmail.com</a>
           </div>
@@ -400,15 +911,15 @@ export default function App() {
           <div className={`p-4 rounded-xl border transition-colors hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-zinc-400 dark:text-zinc-200 mb-1.5"><FaGithub /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>GitHub</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactGithub}</span>
             </div>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className={`text-xs font-semibold hover:underline mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>github.com/yourname</a>
+            <a href="https://github.com/icekung11" target="_blank" rel="noreferrer" className={`text-xs font-semibold hover:underline mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>icekung11</a>
           </div>
           
           <div className={`p-4 rounded-xl border transition-colors hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-[#e1306c] mb-1.5"><FaInstagram /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>Instagram</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactInstagram}</span>
             </div>
             <span className={`text-xs font-semibold mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>icekung_114</span>
           </div>
@@ -416,7 +927,7 @@ export default function App() {
           <div className={`p-4 rounded-xl border transition-colors hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-green-500 mb-1.5"><FaPhoneAlt /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>Phone</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactPhone}</span>
             </div>
             <span className={`text-xs font-semibold mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>081-146-8673</span>
           </div>
@@ -425,41 +936,113 @@ export default function App() {
 
       {/* Comments Section */}
       <section id="comments" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
-        <h2 className={`text-2xl font-bold tracking-tight mb-6 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>Guestbook</h2>
-        <div className={`p-5 rounded-2xl border mb-6 ${darkMode ? "bg-zinc-900/10 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
+        <h2 className={`text-2xl font-bold tracking-tight mb-6 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].guestbookTitle}</h2>
+        <div className={`p-5 rounded-2xl border ${darkMode ? "bg-zinc-900/10 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
           <input
             type="text"
-            placeholder="Your Name"
+            placeholder={translations[lang].guestbookNamePlaceholder}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={`w-full p-3 rounded-xl mb-3 border text-xs outline-none transition-colors ${darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500" : "bg-zinc-50 border-zinc-200 text-zinc-900 focus:border-cyan-500"}`}
+            className={`w-full p-3 rounded-xl mb-3 border text-xs outline-none transition-colors ${
+              darkMode 
+                ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500" 
+                : "bg-white border-zinc-300 text-zinc-900 focus:border-cyan-600"
+            }`}
           />
           <textarea
-            placeholder="Leave a message..."
+            placeholder={translations[lang].guestbookMsgPlaceholder}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className={`w-full h-28 p-3 rounded-xl border text-xs outline-none transition-colors resize-none ${darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500" : "bg-zinc-50 border-zinc-200 text-zinc-900 focus:border-cyan-500"}`}
+            className={`w-full h-28 p-3 rounded-xl border text-xs outline-none transition-colors resize-none ${
+              darkMode 
+                ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500" 
+                : "bg-white border-zinc-300 text-zinc-900 focus:border-cyan-600"
+            }`}
           />
-          <button onClick={sendMessage} className="mt-2 bg-gradient-to-r from-cyan-500 to-purple-500 px-5 py-2.5 rounded-lg font-bold text-xs text-white hover:opacity-95 transition-opacity">
-            Send Message
+          <button onClick={sendMessage} className="mt-2 bg-gradient-to-r from-cyan-500 to-purple-500 px-5 py-2.5 rounded-lg font-bold text-xs text-white hover:opacity-95 transition-opacity shadow-sm">
+            {translations[lang].guestbookSendBtn}
           </button>
-        </div>
-
-        <div className="space-y-3">
-          {comments.map((c) => (
-            <div key={c.id} className={`p-4 rounded-xl border ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
-              <h4 className="text-cyan-400 font-bold text-xs">{c.name}</h4>
-              <p className={`text-xs mt-1.5 leading-relaxed ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>{c.message}</p>
+          
+          {showSuccess && (
+            <div className="mt-3 text-xs text-green-500 font-semibold animate-pulse">
+              {translations[lang].guestbookSuccess}
             </div>
-          ))}
+          )}
         </div>
       </section>
 
+      {/* Interactive Dog Mascot Assistant */}
+      <div className="fixed bottom-6 right-20 z-40 flex flex-col items-end">
+        {/* Speech Bubble */}
+        {dogBubbleOpen && (
+          <div className={`mb-3 max-w-[260px] p-3.5 rounded-2xl border shadow-2xl backdrop-blur-md relative animate-bounce-subtle ${
+            darkMode 
+              ? "bg-zinc-900/95 border-cyan-500/30 text-white" 
+              : "bg-white/95 border-cyan-500/40 text-zinc-900 shadow-cyan-500/10"
+          }`}>
+            <button 
+              onClick={() => setDogBubbleOpen(false)}
+              className={`absolute top-2 right-2 text-xs p-1 ${darkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-zinc-900"}`}
+              title="Close speech bubble"
+            >
+              <FaTimes />
+            </button>
+            <div className="text-[11px] font-bold text-cyan-500 mb-1 flex items-center gap-1.5">
+              <span>{translations[lang].dogDogName}</span>
+            </div>
+            <p className={`text-xs leading-relaxed ${darkMode ? "text-zinc-200" : "text-zinc-700"}`}>
+              {translations[lang].dogTips[dogTipIndex]}
+            </p>
+            <div 
+              className={`mt-2 text-[10px] text-right italic cursor-pointer hover:text-cyan-500 transition ${darkMode ? "text-zinc-500" : "text-zinc-400"}`} 
+              onClick={handleDogClick}
+            >
+              Click me for next tip ✨
+            </div>
+            {/* Bubble Arrow */}
+            <div className={`absolute -bottom-2 right-6 w-3 h-3 border-r border-b rotate-45 ${
+              darkMode ? "bg-zinc-900 border-cyan-500/30" : "bg-white border-cyan-500/40"
+            }`}></div>
+          </div>
+        )}
+
+        {/* Floating Dog Mascot Avatar Button */}
+        <button
+          onClick={handleDogClick}
+          className="relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 shadow-lg shadow-cyan-500/20 animate-float-mascot hover:scale-110 transition duration-300"
+          title="Click to talk to Buddy the AI Dog Mascot!"
+        >
+          <img 
+            src="/dog_mascot.jpg" 
+            alt="Dog Mascot Helper" 
+            className="w-full h-full object-cover rounded-full border-2 border-zinc-950"
+          />
+          <span className="absolute -top-1 -right-1 w-4 h-4 bg-cyan-400 rounded-full border-2 border-zinc-950 flex items-center justify-center text-[8px] font-bold text-black animate-pulse">
+            💬
+          </span>
+        </button>
+      </div>
+
+      {/* Floating Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full border transition-all duration-300 flex items-center justify-center shadow-lg group backdrop-blur-md ${
+            darkMode 
+              ? "bg-zinc-900/90 border-cyan-500/40 text-cyan-400 hover:text-white hover:bg-cyan-500 shadow-cyan-500/10" 
+              : "bg-white/90 border-cyan-500/50 text-cyan-600 hover:text-white hover:bg-cyan-500 shadow-cyan-500/20"
+          }`}
+          title={translations[lang].backToTop}
+          aria-label={translations[lang].backToTop}
+        >
+          <FaArrowUp className="text-base group-hover:-translate-y-0.5 transition duration-200" />
+        </button>
+      )}
+
       {/* Footer */}
       <footer className={`text-center py-8 text-[11px] font-medium border-t ${darkMode ? "border-zinc-900 text-zinc-600" : "border-zinc-200 text-zinc-400"}`}>
-        © 2026 Kittithat Dokboua. All rights reserved.
+        {translations[lang].footer}
       </footer>
     </div>
   );
-  
 }
