@@ -262,7 +262,7 @@ const translations = {
     projectMoreDesc: "Developing future applications and core engineering systems.",
     projectMoreBtn: "GitHub",
     certsTitle: "Certificates & Coursework",
-    certsSub: "Official course completion certificates and academic achievements in Computer Engineering & Development.",
+    certsSub: "Swipe horizontally to explore official course completion certificates and academic credentials.",
     certsView: "View Certificate",
     certModalClose: "Close Preview",
     contactTitle: "Contact & Network",
@@ -330,7 +330,7 @@ const translations = {
     projectMoreDesc: "กำลังพัฒนาแอปพลิเคชันและระบบวิศวกรรมหลักอื่นๆ เพิ่มเติมในอนาคต",
     projectMoreBtn: "กิตฮับ (GitHub)",
     certsTitle: "ใบประกาศนียบัตร & วุฒิบัตร",
-    certsSub: "วุฒิบัตรและใบประกาศนียบัตรรับรองการเรียนรู้ทางวิชาการด้านวิศวกรรมคอมพิวเตอร์และการพัฒนาซอฟต์แวร์",
+    certsSub: "เลื่อนในแนวนอนเพื่อสำรวจใบประกาศนียบัตรและวุฒิบัตรทางวิชาการ",
     certsView: "ดูใบประกาศ",
     certModalClose: "ปิดหน้าต่าง",
     contactTitle: "ช่องทางการติดต่อ",
@@ -748,12 +748,12 @@ export default function App() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-thin snap-x snap-mandatory">
           {certificates[lang].map((cert, index) => (
             <div 
               key={cert.id}
               onClick={() => setSelectedCertIndex(index)}
-              className={`rounded-2xl border overflow-hidden transition group cursor-pointer flex flex-col justify-between ${
+              className={`min-w-[270px] md:min-w-[320px] rounded-2xl border overflow-hidden transition group cursor-pointer flex flex-col justify-between snap-start ${
                 darkMode 
                   ? "bg-zinc-900/30 border-zinc-800/80 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/5" 
                   : "bg-white border-zinc-200 shadow-sm hover:border-cyan-500"
