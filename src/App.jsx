@@ -21,6 +21,9 @@ import {
   serverTimestamp 
 } from "firebase/firestore";
 
+// Helper for GitHub Pages asset resolution
+const baseAsset = (path) => `${import.meta.env.BASE_URL}${path.startsWith('/') ? path.slice(1) : path}`;
+
 // ==========================================
 // DATA ZONE
 // ==========================================
@@ -80,8 +83,8 @@ const projects = {
       image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
       tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "Math Modeling"],
       links: [
-        { label: "📄 Full Report (PDF)", url: "/fourier_report.pdf" },
-        { label: "💻 Source Code (.py)", url: "/fourier_series.py" }
+        { label: "📄 Full Report (PDF)", url: baseAsset("fourier_report.pdf") },
+        { label: "💻 Source Code (.py)", url: baseAsset("fourier_series.py") }
       ]
     },
     {
@@ -110,8 +113,8 @@ const projects = {
       image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
       tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "การจำลองทางคณิตศาสตร์"],
       links: [
-        { label: "📄 รายงานฉบับเต็ม (PDF)", url: "/fourier_report.pdf" },
-        { label: "💻 ซอร์สโค้ด (.py)", url: "/fourier_series.py" }
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("fourier_report.pdf") },
+        { label: "💻 ซอร์สโค้ด (.py)", url: baseAsset("fourier_series.py") }
       ]
     },
     {
@@ -142,7 +145,7 @@ const certificates = {
       title: "Linux Systems & Network Architecture",
       issuer: "Systems Engineering Institute",
       date: "2025",
-      image: "/cert_linux.jpg",
+      image: baseAsset("cert_linux.jpg"),
       desc: "Course completion in Linux Administration basics, Shell Scripting, Network Concepts, and System Infrastructure fundamentals.",
       tags: ["Linux", "Networking", "Systems Basics"]
     },
@@ -151,7 +154,7 @@ const certificates = {
       title: "Python Scientific Computing & Fourier Analysis",
       issuer: "Engineering Computation Board",
       date: "2025",
-      image: "/cert_python.jpg",
+      image: baseAsset("cert_python.jpg"),
       desc: "Course completion in numerical Fourier coefficient calculations, SciPy integration, and mathematical modeling.",
       tags: ["Python", "SciPy", "Math Modeling"]
     },
@@ -160,7 +163,7 @@ const certificates = {
       title: "Full Stack Web Application Architecture",
       issuer: "Modern Web Engineering Academy",
       date: "2026",
-      image: "/cert_fullstack.jpg",
+      image: baseAsset("cert_fullstack.jpg"),
       desc: "Course completion in React application development, Vite tooling, Tailwind UI components, and Firebase database integration.",
       tags: ["React", "Full Stack", "Firebase"]
     },
@@ -169,7 +172,7 @@ const certificates = {
       title: "Digital Logic Design & Transient Analysis",
       issuer: "Computer Engineering Department",
       date: "2025",
-      image: "/cert_circuits.jpg",
+      image: baseAsset("cert_circuits.jpg"),
       desc: "Course completion in Transient Response numerical simulation (RL, RC, RLC), Kirchhoff's laws, and digital logic gates.",
       tags: ["Digital Logic", "Circuits", "Electronics"]
     }
@@ -180,7 +183,7 @@ const certificates = {
       title: "ระบบปฏิบัติการ Linux & โครงสร้างพื้นฐานเครือข่าย",
       issuer: "สถาบันวิศวกรรมระบบและระบบเครือข่าย",
       date: "2025",
-      image: "/cert_linux.jpg",
+      image: baseAsset("cert_linux.jpg"),
       desc: "ใบรับรองการผ่านหลักสูตรเรียนรู้ระบบปฏิบัติการ Linux, Shell Scripting และพื้นฐานระบบเครือข่าย",
       tags: ["Linux", "ระบบเครือข่าย", "วิศวกรรมระบบ"]
     },
@@ -189,7 +192,7 @@ const certificates = {
       title: "การประมวลผลคณิตศาสตร์ & อนุกรมฟูเรียร์ด้วย Python",
       issuer: "สถาบันคำนวณและจำลองทางวิศวกรรม",
       date: "2025",
-      image: "/cert_python.jpg",
+      image: baseAsset("cert_python.jpg"),
       desc: "ใบรับรองการผ่านหลักสูตรคำนวณสัมประสิทธิ์อนุกรมฟูเรียร์เชิงตัวเลขและการใช้งาน Python SciPy",
       tags: ["Python", "SciPy", "คณิตศาสตร์วิศวกรรม"]
     },
@@ -198,7 +201,7 @@ const certificates = {
       title: "สถาปัตยกรรมเว็บแอปพลิเคชัน Full Stack & React",
       issuer: "สถาบันพัฒนาซอฟต์แวร์และเว็บสมัยใหม่",
       date: "2026",
-      image: "/cert_fullstack.jpg",
+      image: baseAsset("cert_fullstack.jpg"),
       desc: "ใบรับรองการผ่านหลักสูตรพัฒนาเว็บแอปพลิเคชันด้วย React, Vite, Tailwind CSS และ Firebase",
       tags: ["React", "Full Stack", "Firebase"]
     },
@@ -207,7 +210,7 @@ const certificates = {
       title: "การออกแบบตรรกศาสตร์ดิจิทัล & วิเคราะห์วงจร",
       issuer: "ภาควิชาวิศวกรรมคอมพิวเตอร์",
       date: "2025",
-      image: "/cert_circuits.jpg",
+      image: baseAsset("cert_circuits.jpg"),
       desc: "ใบรับรองการผ่านหลักสูตรจำลองการตอบสนองชั่วครู่ (Transient Responses) และตรรกศาสตร์ดิจิทัล",
       tags: ["ตรรกศาสตร์ดิจิทัล", "วิเคราะห์วงจร", "อิเล็กทรอนิกส์"]
     }
@@ -579,7 +582,7 @@ export default function App() {
         <div className="md:col-span-2 flex justify-center order-first md:order-last">
           <div className={`relative w-full max-w-[270px] p-3 rounded-[24px] border ${darkMode ? "bg-zinc-900/40 border-zinc-800/80" : "bg-white border-zinc-200 shadow-sm"}`}>
             <img
-              src="/profile.jpg"
+              src={baseAsset("profile.jpg")}
               alt="Profile"
               className="w-full h-[320px] object-cover rounded-[16px]"
             />
@@ -1013,7 +1016,7 @@ export default function App() {
           title="Click to talk to Buddy the AI Dog Mascot!"
         >
           <img 
-            src="/dog_mascot.jpg" 
+            src={baseAsset("dog_mascot.jpg")} 
             alt="Dog Mascot Helper" 
             className="w-full h-full object-cover rounded-full border-2 border-zinc-950"
           />
