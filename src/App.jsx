@@ -4,7 +4,7 @@ import {
   FaJava, FaPython, FaLinux, FaNetworkWired, FaReact, 
   FaGithub, FaInstagram, FaPhoneAlt, FaFolderPlus,
   FaAward, FaGraduationCap, FaArrowUp, FaTimes, FaExpand,
-  FaCheckCircle, FaHeart, FaChevronRight
+  FaCheckCircle, FaHeart, FaChevronRight, FaTerminal, FaCode
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiJavascript, SiMaildotru 
@@ -32,20 +32,20 @@ const skillCategories = [
   {
     title: "Core & Systems Engineering",
     list: [
-      { name: "Linux Systems", icon: <FaLinux className="text-[#fdb514]" />, glowColor: "group-hover:shadow-[#fdb514]/20" },
-      { name: "Networking", icon: <FaNetworkWired className="text-[#0052cc]" />, glowColor: "group-hover:shadow-[#0052cc]/20" },
-      { name: "Digital Logic Design", icon: <GiCpu className="text-[#a855f7]" />, glowColor: "group-hover:shadow-[#a855f7]/20" },
-      { name: "Fundamentals of Electronics", icon: <GiCircuitry className="text-[#ef4444]" />, glowColor: "group-hover:shadow-[#ef4444]/20" },
+      { name: "Linux Systems", icon: <FaLinux className="text-[#fdb514]" />, glowColor: "group-hover:shadow-[#fdb514]/30" },
+      { name: "Networking", icon: <FaNetworkWired className="text-[#0052cc]" />, glowColor: "group-hover:shadow-[#0052cc]/30" },
+      { name: "Digital Logic Design", icon: <GiCpu className="text-[#a855f7]" />, glowColor: "group-hover:shadow-[#a855f7]/30" },
+      { name: "Fundamentals of Electronics", icon: <GiCircuitry className="text-[#ef4444]" />, glowColor: "group-hover:shadow-[#ef4444]/30" },
     ]
   },
   {
     title: "Software & Web Development",
     list: [
-      { name: "Java", icon: <FaJava className="text-[#f89820]" />, glowColor: "group-hover:shadow-[#f89820]/20" },
-      { name: "Python", icon: <FaPython className="text-[#3776ab]" />, glowColor: "group-hover:shadow-[#3776ab]/20" },
-      { name: "JavaScript", icon: <SiJavascript className="text-[#f7df1e]" />, glowColor: "group-hover:shadow-[#f7df1e]/20" },
-      { name: "React", icon: <FaReact className="text-[#61dafb]" />, glowColor: "group-hover:shadow-[#61dafb]/20" },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06b6d4]" />, glowColor: "group-hover:shadow-[#06b6d4]/20" },
+      { name: "Java", icon: <FaJava className="text-[#f89820]" />, glowColor: "group-hover:shadow-[#f89820]/30" },
+      { name: "Python", icon: <FaPython className="text-[#3776ab]" />, glowColor: "group-hover:shadow-[#3776ab]/30" },
+      { name: "JavaScript", icon: <SiJavascript className="text-[#f7df1e]" />, glowColor: "group-hover:shadow-[#f7df1e]/30" },
+      { name: "React", icon: <FaReact className="text-[#61dafb]" />, glowColor: "group-hover:shadow-[#61dafb]/30" },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06b6d4]" />, glowColor: "group-hover:shadow-[#06b6d4]/30" },
     ]
   }
 ];
@@ -386,6 +386,9 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
+  // Interactive Mouse Cursor Spotlight
+  const [mousePos, setMousePos] = useState({ x: -200, y: -200 });
+
   // Interactive Dog Mascot State
   const [dogTipIndex, setDogTipIndex] = useState(0);
   const [dogBubbleOpen, setDogBubbleOpen] = useState(true);
@@ -393,6 +396,15 @@ export default function App() {
 
   const selectedProject = selectedProjectIndex !== null ? projects[lang][selectedProjectIndex] : null;
   const selectedCert = selectedCertIndex !== null ? certificates[lang][selectedCertIndex] : null;
+
+  // Track Mouse Movement for Futuristic Cursor Glow
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   // Handle Scroll Events for Progress, Active Section & Back To Top Button
   useEffect(() => {
@@ -483,29 +495,37 @@ export default function App() {
       id="top"
       className={
         darkMode
-          ? "overflow-x-hidden min-h-screen font-sans text-zinc-100 bg-[#09090b] transition-colors duration-300 relative"
+          ? "overflow-x-hidden min-h-screen font-sans text-zinc-100 bg-[#09090b] bg-cyber-grid transition-colors duration-300 relative"
           : "overflow-x-hidden min-h-screen font-sans text-zinc-900 bg-[#fafafa] transition-colors duration-300 relative"
       }
     >
+      {/* Interactive Mouse Glow Spotlight */}
+      <div 
+        className="fixed w-[380px] h-[380px] rounded-full bg-cyan-500/10 blur-[100px] pointer-events-none transition-transform duration-100 ease-out z-0 hidden lg:block"
+        style={{
+          transform: `translate(${mousePos.x - 190}px, ${mousePos.y - 190}px)`
+        }}
+      />
+
       {/* Scroll Progress Bar at Top */}
       <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-transparent pointer-events-none">
         <div 
-          className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 transition-all duration-150 shadow-sm shadow-cyan-500/50"
+          className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 transition-all duration-150 shadow-md shadow-cyan-500/50"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
       {/* Background Ambient Glow & Floating Particles */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className={`absolute top-0 left-0 w-[700px] h-[700px] rounded-full blur-[160px] animate-pulse-glow ${darkMode ? "bg-cyan-500/10" : "bg-cyan-500/5"}`} />
-        <div className={`absolute top-1/2 right-0 w-[600px] h-[600px] rounded-full blur-[160px] animate-particle-1 ${darkMode ? "bg-purple-500/10" : "bg-purple-500/5"}`} />
-        <div className={`absolute bottom-0 left-1/3 w-[650px] h-[650px] rounded-full blur-[160px] animate-particle-2 ${darkMode ? "bg-pink-500/10" : "bg-pink-500/5"}`} />
+        <div className={`absolute top-0 left-0 w-[700px] h-[700px] rounded-full blur-[160px] animate-pulse-glow ${darkMode ? "bg-cyan-500/15" : "bg-cyan-500/5"}`} />
+        <div className={`absolute top-1/2 right-0 w-[600px] h-[600px] rounded-full blur-[160px] animate-particle-1 ${darkMode ? "bg-purple-500/15" : "bg-purple-500/5"}`} />
+        <div className={`absolute bottom-0 left-1/3 w-[650px] h-[650px] rounded-full blur-[160px] animate-particle-2 ${darkMode ? "bg-pink-500/15" : "bg-pink-500/5"}`} />
       </div>
 
       {/* Navbar */}
-      <nav className={`px-6 md:px-12 py-4 border-b backdrop-blur-md sticky top-0 z-40 transition-colors ${darkMode ? "border-zinc-800/50 bg-[#09090b]/80 text-zinc-100" : "border-zinc-200 bg-[#fafafa]/90 text-zinc-900 shadow-sm"}`}>
+      <nav className={`px-6 md:px-12 py-4 border-b backdrop-blur-md sticky top-0 z-40 transition-colors ${darkMode ? "border-zinc-800/60 bg-[#09090b]/85 text-zinc-100" : "border-zinc-200 bg-[#fafafa]/90 text-zinc-900 shadow-sm"}`}>
         <div className="max-w-5xl mx-auto flex justify-between items-center w-full">
-          <a href="#top" className="text-xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 hover:opacity-90 transition group flex items-center gap-1">
+          <a href="#top" className="text-xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 hover:opacity-90 transition group flex items-center gap-1">
             KITTITHAT.D<span className="text-cyan-400 group-hover:animate-ping">.</span>
           </a>
 
@@ -598,7 +618,7 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24 grid md:grid-cols-5 gap-8 md:gap-12 items-center">
         <div className="md:col-span-3 text-center md:text-left">
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4 border backdrop-blur-md ${darkMode ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-400" : "bg-cyan-50 border-cyan-200 text-cyan-700 shadow-sm"}`}>
+          <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4 border backdrop-blur-md ${darkMode ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-400 shadow-lg shadow-cyan-500/10" : "bg-cyan-50 border-cyan-200 text-cyan-700 shadow-sm"}`}>
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
             {translations[lang].heroSub}
           </div>
@@ -612,11 +632,24 @@ export default function App() {
            {translations[lang].heroDesc}
           </p>
 
-          {/* Hero Action Badges */}
-          <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-2">
-            <span className={`text-[11px] font-semibold px-3 py-1.5 rounded-xl border backdrop-blur-md transition-all duration-300 hover:scale-105 ${darkMode ? "bg-zinc-900/60 border-zinc-800 text-zinc-300 hover:border-cyan-500/50" : "bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-cyan-400"}`}>Computer Engineering Student</span>
-            <span className={`text-[11px] font-semibold px-3 py-1.5 rounded-xl border backdrop-blur-md transition-all duration-300 hover:scale-105 ${darkMode ? "bg-zinc-900/60 border-zinc-800 text-zinc-300 hover:border-purple-500/50" : "bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-purple-400"}`}>Web Development Learner</span>
-            <span className={`text-[11px] font-semibold px-3 py-1.5 rounded-xl border backdrop-blur-md transition-all duration-300 hover:scale-105 ${darkMode ? "bg-zinc-900/60 border-zinc-800 text-zinc-300 hover:border-pink-500/50" : "bg-white border-zinc-200 text-zinc-700 shadow-sm hover:border-pink-400"}`}>Digital Logic</span>
+          {/* Interactive Floating Code Terminal Window */}
+          <div className={`mt-6 p-4 rounded-xl border font-mono text-[11px] leading-relaxed shadow-xl text-left max-w-md ${darkMode ? "bg-zinc-950/90 border-zinc-800 text-zinc-300" : "bg-zinc-900 text-zinc-200"}`}>
+            <div className="flex items-center gap-2 mb-2 pb-2 border-b border-zinc-800 text-xs text-zinc-500">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span>
+              <span className="ml-2 font-sans font-medium text-[10px] text-zinc-400 flex items-center gap-1">
+                <FaTerminal className="text-cyan-400 text-[10px]" /> developer_profile.js
+              </span>
+            </div>
+            <div>
+              <span className="text-purple-400">const</span> <span className="text-cyan-300">engineer</span> = &#123;<br />
+              &nbsp;&nbsp;<span className="text-zinc-400">name:</span> <span className="text-green-400">"Kittithat Dokboua (ICE)"</span>,<br />
+              &nbsp;&nbsp;<span className="text-zinc-400">degree:</span> <span className="text-green-400">"Computer Engineering @ SWU"</span>,<br />
+              &nbsp;&nbsp;<span className="text-zinc-400">passions:</span> [<span className="text-cyan-300">"System Eng"</span>, <span className="text-purple-300">"Web Apps"</span>, <span className="text-pink-300">"Digital Logic"</span>],<br />
+              &nbsp;&nbsp;<span className="text-zinc-400">status:</span> <span className="text-yellow-400">"Always Eager to Learn 🚀"</span><br />
+              &#125;;
+            </div>
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4 text-sm font-semibold">
@@ -629,24 +662,29 @@ export default function App() {
           </div>
         </div>
 
+        {/* Profile Picture Frame with Animated Neon Ring */}
         <div className="md:col-span-2 flex justify-center order-first md:order-last">
-          <div className={`relative w-full max-w-[280px] p-3.5 rounded-[28px] border transition-all duration-500 hover:scale-[1.02] ${darkMode ? "bg-zinc-900/40 border-zinc-800/80 shadow-2xl shadow-cyan-500/5 hover:border-cyan-500/40" : "bg-white border-zinc-200 shadow-lg hover:border-cyan-400"}`}>
-            <div className="relative overflow-hidden rounded-[20px] group">
-              <img
-                src={baseAsset("profile.jpg")}
-                alt="Profile"
-                className="w-full h-[330px] object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <div className="mt-4 text-center">
-              <h3 className={`text-lg font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].profileName}</h3>
-              <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
-                {translations[lang].profileUni} 
-              </p>
-              <p className={`text-xs ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
-                {translations[lang].profileSub}
-              </p>
+          <div className="animated-border-ring">
+            <div className={`animated-border-inner relative w-full max-w-[280px] p-3.5 rounded-[28px] border transition-all duration-500 ${darkMode ? "bg-zinc-950 border-zinc-800/80 shadow-2xl" : "bg-white border-zinc-200 shadow-lg"}`}>
+              <div className="relative overflow-hidden rounded-[20px] group">
+                <img
+                  src={baseAsset("profile.jpg")}
+                  alt="Profile"
+                  className="w-full h-[330px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 text-white text-xs font-medium">
+                  ✨ Computer Engineering Student @ SWU
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <h3 className={`text-lg font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].profileName}</h3>
+                <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
+                  {translations[lang].profileUni} 
+                </p>
+                <p className={`text-xs ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
+                  {translations[lang].profileSub}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -657,7 +695,7 @@ export default function App() {
         <h2 className={`text-2xl font-bold tracking-tight mb-8 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].aboutTitle}</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${darkMode ? "bg-zinc-900/20 border-zinc-850 hover:border-cyan-500/50" : "bg-white border-zinc-200/80 shadow-sm hover:border-cyan-400"}`}>
+          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/5" : "bg-white border-zinc-200/80 shadow-sm hover:border-cyan-400"}`}>
             <h3 className="text-base font-bold text-cyan-400 mb-3 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-cyan-400"></span> {translations[lang].aboutIntroTitle}
             </h3>
@@ -666,7 +704,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${darkMode ? "bg-zinc-900/20 border-zinc-850 hover:border-purple-500/50" : "bg-white border-zinc-200/80 shadow-sm hover:border-purple-400"}`}>
+          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-purple-500/60 hover:shadow-lg hover:shadow-purple-500/5" : "bg-white border-zinc-200/80 shadow-sm hover:border-purple-400"}`}>
             <h3 className="text-base font-bold text-purple-400 mb-3 flex items-center gap-2">
               <FaGraduationCap /> {translations[lang].aboutEduTitle}
             </h3>
@@ -679,7 +717,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${darkMode ? "bg-zinc-900/20 border-zinc-850 hover:border-pink-500/50" : "bg-white border-zinc-200/80 shadow-sm hover:border-pink-400"}`}>
+          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-pink-500/60 hover:shadow-lg hover:shadow-pink-500/5" : "bg-white border-zinc-200/80 shadow-sm hover:border-pink-400"}`}>
             <h3 className="text-base font-bold text-pink-400 mb-3 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-pink-400"></span> {translations[lang].aboutIntTitle}
             </h3>
@@ -709,7 +747,7 @@ export default function App() {
                 {category.list.map((skill, index) => (
                   <div
                     key={index}
-                    className={`p-3.5 rounded-xl border flex items-center gap-3.5 transition-all duration-300 group hover:-translate-y-1 ${skill.glowColor} ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-cyan-500/60" : "bg-white border-zinc-200 hover:border-cyan-400 shadow-sm"}`}
+                    className={`p-3.5 rounded-xl border flex items-center gap-3.5 transition-all duration-300 group hover:-translate-y-1 ${skill.glowColor} ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-cyan-500/60 hover:shadow-xl" : "bg-white border-zinc-200 hover:border-cyan-400 shadow-sm"}`}
                   >
                     <div className="text-2xl transform group-hover:scale-110 transition duration-300 shrink-0">
                       {skill.icon}
@@ -739,7 +777,7 @@ export default function App() {
               onClick={() => setSelectedProjectIndex(index)}
               className={
                 darkMode
-                  ? "min-w-[290px] md:min-w-[380px] bg-zinc-900/20 border border-zinc-850 rounded-2xl p-5 hover:border-cyan-500/60 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start group shadow-lg hover:shadow-cyan-500/5"
+                  ? "min-w-[290px] md:min-w-[380px] bg-zinc-900/20 border border-zinc-850 rounded-2xl p-5 hover:border-cyan-500/60 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start group shadow-lg hover:shadow-cyan-500/10"
                   : "min-w-[290px] md:min-w-[380px] bg-white border border-zinc-200 rounded-2xl p-5 hover:border-cyan-500 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start shadow-sm group hover:shadow-md"
               }
             >
@@ -817,7 +855,7 @@ export default function App() {
               onClick={() => setSelectedCertIndex(index)}
               className={`min-w-[270px] md:min-w-[320px] rounded-2xl border overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between snap-start hover:-translate-y-1.5 ${
                 darkMode 
-                  ? "bg-zinc-900/30 border-zinc-800/80 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/5" 
+                  ? "bg-zinc-900/30 border-zinc-800/80 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/10" 
                   : "bg-white border-zinc-200 shadow-sm hover:border-cyan-500 hover:shadow-md"
               }`}
             >
