@@ -32,20 +32,20 @@ const skillCategories = [
   {
     title: "Core & Systems Engineering",
     list: [
-      { name: "Linux Systems", icon: <FaLinux className="text-[#fdb514]" />, glowColor: "group-hover:shadow-[#fdb514]/30" },
-      { name: "Networking", icon: <FaNetworkWired className="text-[#0052cc]" />, glowColor: "group-hover:shadow-[#0052cc]/30" },
-      { name: "Digital Logic Design", icon: <GiCpu className="text-[#a855f7]" />, glowColor: "group-hover:shadow-[#a855f7]/30" },
-      { name: "Fundamentals of Electronics", icon: <GiCircuitry className="text-[#ef4444]" />, glowColor: "group-hover:shadow-[#ef4444]/30" },
+      { name: "Linux Systems", icon: <FaLinux className="text-[#fdb514]" />, glowColor: "group-hover:border-[#fdb514]/60 group-hover:shadow-[#fdb514]/20" },
+      { name: "Networking", icon: <FaNetworkWired className="text-[#0052cc]" />, glowColor: "group-hover:border-[#0052cc]/60 group-hover:shadow-[#0052cc]/20" },
+      { name: "Digital Logic Design", icon: <GiCpu className="text-[#a855f7]" />, glowColor: "group-hover:border-[#a855f7]/60 group-hover:shadow-[#a855f7]/20" },
+      { name: "Fundamentals of Electronics", icon: <GiCircuitry className="text-[#ef4444]" />, glowColor: "group-hover:border-[#ef4444]/60 group-hover:shadow-[#ef4444]/20" },
     ]
   },
   {
     title: "Software & Web Development",
     list: [
-      { name: "Java", icon: <FaJava className="text-[#f89820]" />, glowColor: "group-hover:shadow-[#f89820]/30" },
-      { name: "Python", icon: <FaPython className="text-[#3776ab]" />, glowColor: "group-hover:shadow-[#3776ab]/30" },
-      { name: "JavaScript", icon: <SiJavascript className="text-[#f7df1e]" />, glowColor: "group-hover:shadow-[#f7df1e]/30" },
-      { name: "React", icon: <FaReact className="text-[#61dafb]" />, glowColor: "group-hover:shadow-[#61dafb]/30" },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06b6d4]" />, glowColor: "group-hover:shadow-[#06b6d4]/30" },
+      { name: "Java", icon: <FaJava className="text-[#f89820]" />, glowColor: "group-hover:border-[#f89820]/60 group-hover:shadow-[#f89820]/20" },
+      { name: "Python", icon: <FaPython className="text-[#3776ab]" />, glowColor: "group-hover:border-[#3776ab]/60 group-hover:shadow-[#3776ab]/20" },
+      { name: "JavaScript", icon: <SiJavascript className="text-[#f7df1e]" />, glowColor: "group-hover:border-[#f7df1e]/60 group-hover:shadow-[#f7df1e]/20" },
+      { name: "React", icon: <FaReact className="text-[#61dafb]" />, glowColor: "group-hover:border-[#61dafb]/60 group-hover:shadow-[#61dafb]/20" },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06b6d4]" />, glowColor: "group-hover:border-[#06b6d4]/60 group-hover:shadow-[#06b6d4]/20" },
     ]
   }
 ];
@@ -499,11 +499,11 @@ export default function App() {
           : "overflow-x-hidden min-h-screen font-sans text-zinc-900 bg-[#fafafa] transition-colors duration-300 relative"
       }
     >
-      {/* Interactive Mouse Glow Spotlight */}
+      {/* Interactive Mouse Glow Spotlight Following Cursor across the Entire Page */}
       <div 
-        className="fixed w-[380px] h-[380px] rounded-full bg-cyan-500/10 blur-[100px] pointer-events-none transition-transform duration-100 ease-out z-0 hidden lg:block"
+        className="fixed w-[420px] h-[420px] rounded-full bg-cyan-500/15 blur-[120px] pointer-events-none transition-transform duration-100 ease-out z-0 hidden lg:block"
         style={{
-          transform: `translate(${mousePos.x - 190}px, ${mousePos.y - 190}px)`
+          transform: `translate(${mousePos.x - 210}px, ${mousePos.y - 210}px)`
         }}
       />
 
@@ -515,11 +515,18 @@ export default function App() {
         />
       </div>
 
-      {/* Background Ambient Glow & Floating Particles */}
+      {/* Full-Page Continuous Ambient Glowing Orbs */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className={`absolute top-0 left-0 w-[700px] h-[700px] rounded-full blur-[160px] animate-pulse-glow ${darkMode ? "bg-cyan-500/15" : "bg-cyan-500/5"}`} />
-        <div className={`absolute top-1/2 right-0 w-[600px] h-[600px] rounded-full blur-[160px] animate-particle-1 ${darkMode ? "bg-purple-500/15" : "bg-purple-500/5"}`} />
-        <div className={`absolute bottom-0 left-1/3 w-[650px] h-[650px] rounded-full blur-[160px] animate-particle-2 ${darkMode ? "bg-pink-500/15" : "bg-pink-500/5"}`} />
+        {/* Top/Hero Glow */}
+        <div className={`absolute top-0 left-0 w-[700px] h-[700px] rounded-full blur-[180px] animate-pulse-glow ${darkMode ? "bg-cyan-500/15" : "bg-cyan-500/5"}`} />
+        {/* Mid-Upper/Skills Glow */}
+        <div className={`absolute top-[25%] right-0 w-[650px] h-[650px] rounded-full blur-[180px] animate-particle-1 ${darkMode ? "bg-purple-500/15" : "bg-purple-500/5"}`} />
+        {/* Center/Projects Glow */}
+        <div className={`absolute top-[50%] left-[-100px] w-[700px] h-[700px] rounded-full blur-[180px] animate-particle-2 ${darkMode ? "bg-pink-500/15" : "bg-pink-500/5"}`} />
+        {/* Mid-Lower/Certificates Glow */}
+        <div className={`absolute top-[70%] right-[-100px] w-[700px] h-[700px] rounded-full blur-[180px] animate-particle-3 ${darkMode ? "bg-cyan-500/15" : "bg-cyan-500/5"}`} />
+        {/* Bottom/Guestbook Glow */}
+        <div className={`absolute bottom-0 left-[20%] w-[700px] h-[700px] rounded-full blur-[180px] animate-pulse-glow ${darkMode ? "bg-purple-500/15" : "bg-purple-500/5"}`} />
       </div>
 
       {/* Navbar */}
@@ -695,33 +702,33 @@ export default function App() {
         <h2 className={`text-2xl font-bold tracking-tight mb-8 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].aboutTitle}</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/5" : "bg-white border-zinc-200/80 shadow-sm hover:border-cyan-400"}`}>
+          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/10" : "bg-white border-zinc-200/80 shadow-sm hover:border-cyan-400"}`}>
             <h3 className="text-base font-bold text-cyan-400 mb-3 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400"></span> {translations[lang].aboutIntroTitle}
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span> {translations[lang].aboutIntroTitle}
             </h3>
-            <p className={`leading-relaxed text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <p className={`leading-relaxed text-sm ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
              {translations[lang].aboutIntroDesc}
             </p>
           </div>
 
-          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-purple-500/60 hover:shadow-lg hover:shadow-purple-500/5" : "bg-white border-zinc-200/80 shadow-sm hover:border-purple-400"}`}>
+          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:border-purple-500/60 hover:shadow-xl hover:shadow-purple-500/10" : "bg-white border-zinc-200/80 shadow-sm hover:border-purple-400"}`}>
             <h3 className="text-base font-bold text-purple-400 mb-3 flex items-center gap-2">
               <FaGraduationCap /> {translations[lang].aboutEduTitle}
             </h3>
-            <div className={`space-y-4 leading-relaxed text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <div className={`space-y-4 leading-relaxed text-sm ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
               <div>
-                <h4 className={`font-semibold ${darkMode ? "text-zinc-200" : "text-zinc-800"}`}>{translations[lang].aboutEduDegree}</h4>
+                <h4 className={`font-semibold ${darkMode ? "text-zinc-100" : "text-zinc-800"}`}>{translations[lang].aboutEduDegree}</h4>
                 <p>{translations[lang].aboutEduUni}</p>
-                <p className="text-xs mt-1 opacity-60">{translations[lang].aboutEduPeriod}</p>
+                <p className="text-xs mt-1 opacity-70 text-cyan-400">{translations[lang].aboutEduPeriod}</p>
               </div>
             </div>
           </div>
 
-          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-pink-500/60 hover:shadow-lg hover:shadow-pink-500/5" : "bg-white border-zinc-200/80 shadow-sm hover:border-pink-400"}`}>
+          <div className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:border-pink-500/60 hover:shadow-xl hover:shadow-pink-500/10" : "bg-white border-zinc-200/80 shadow-sm hover:border-pink-400"}`}>
             <h3 className="text-base font-bold text-pink-400 mb-3 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-pink-400"></span> {translations[lang].aboutIntTitle}
             </h3>
-            <ul className={`space-y-2.5 text-sm ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            <ul className={`space-y-2.5 text-sm ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
               {translations[lang].aboutInterests.map((interest, idx) => (
                 <li key={idx} className="flex items-center gap-2">
                   <span className="text-cyan-400 font-bold">•</span> {interest}
@@ -733,26 +740,33 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="max-w-5xl mx-auto px-6 md:px-12 py-16">
-        <h2 className={`text-2xl font-bold tracking-tight mb-8 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
-          {translations[lang].skillsTitle}
-        </h2>
+      <section id="skills" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
+        <div className="flex items-center gap-2 mb-8">
+          <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-500/10 border border-purple-500/30 text-purple-400">
+            ⚡ Tech Stack
+          </span>
+          <h2 className={`text-2xl font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
+            {translations[lang].skillsTitle}
+          </h2>
+        </div>
+
         <div className="space-y-8">
           {skillCategories.map((category, catIdx) => (
             <div key={catIdx}>
-              <h3 className={`text-xs uppercase tracking-widest font-bold mb-3.5 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
+              <h3 className={`text-xs uppercase tracking-widest font-bold mb-3.5 flex items-center gap-2 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
                 {translations[lang].skillsCategories[category.title] || category.title}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {category.list.map((skill, index) => (
                   <div
                     key={index}
-                    className={`p-3.5 rounded-xl border flex items-center gap-3.5 transition-all duration-300 group hover:-translate-y-1 ${skill.glowColor} ${darkMode ? "bg-zinc-900/30 border-zinc-850 hover:border-cyan-500/60 hover:shadow-xl" : "bg-white border-zinc-200 hover:border-cyan-400 shadow-sm"}`}
+                    className={`p-4 rounded-xl border flex items-center gap-3.5 transition-all duration-300 group hover:-translate-y-1.5 ${skill.glowColor} ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:shadow-xl" : "bg-white border-zinc-200 hover:border-cyan-400 shadow-sm"}`}
                   >
-                    <div className="text-2xl transform group-hover:scale-110 transition duration-300 shrink-0">
+                    <div className="text-2xl transform group-hover:scale-125 transition duration-300 shrink-0">
                       {skill.icon}
                     </div>
-                    <span className={`text-xs font-semibold truncate ${darkMode ? "text-zinc-300 group-hover:text-zinc-100" : "text-zinc-700 group-hover:text-zinc-900"}`}>
+                    <span className={`text-xs font-bold truncate transition-colors ${darkMode ? "text-zinc-300 group-hover:text-cyan-400" : "text-zinc-700 group-hover:text-cyan-600"}`}>
                       {skillNames[lang][skill.name] || skill.name}
                     </span>
                   </div>
@@ -764,9 +778,14 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="max-w-5xl mx-auto px-6 md:px-12 py-16">
-        <h2 className={`text-2xl font-bold tracking-tight mb-2 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].projectsTitle}</h2>
-        <p className={`text-xs mb-8 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
+      <section id="projects" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="px-3 py-1 rounded-full text-xs font-bold bg-pink-500/10 border border-pink-500/30 text-pink-400">
+            🚀 Showcases
+          </span>
+          <h2 className={`text-2xl font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].projectsTitle}</h2>
+        </div>
+        <p className={`text-xs mb-8 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
           {translations[lang].projectsSub}
         </p>
         
@@ -777,14 +796,17 @@ export default function App() {
               onClick={() => setSelectedProjectIndex(index)}
               className={
                 darkMode
-                  ? "min-w-[290px] md:min-w-[380px] bg-zinc-900/20 border border-zinc-850 rounded-2xl p-5 hover:border-cyan-500/60 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start group shadow-lg hover:shadow-cyan-500/10"
-                  : "min-w-[290px] md:min-w-[380px] bg-white border border-zinc-200 rounded-2xl p-5 hover:border-cyan-500 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start shadow-sm group hover:shadow-md"
+                  ? "min-w-[290px] md:min-w-[380px] bg-zinc-900/40 border border-zinc-800 rounded-2xl p-5 hover:border-cyan-500/60 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start group shadow-xl hover:shadow-cyan-500/15"
+                  : "min-w-[290px] md:min-w-[380px] bg-white border border-zinc-200 rounded-2xl p-5 hover:border-cyan-500 hover:-translate-y-2 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start shadow-sm group hover:shadow-lg"
               }
             >
               <div>
                 <div className="h-44 w-full rounded-xl overflow-hidden mb-4 relative bg-zinc-950">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity" />
+                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-bold text-cyan-300 border border-cyan-500/30">
+                    Project #{index + 1}
+                  </span>
                 </div>
                 <h3 className={`text-lg font-bold tracking-tight mb-2 truncate transition-colors group-hover:text-cyan-400 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{project.title}</h3>
                 <p className={`text-xs leading-relaxed line-clamp-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
@@ -795,12 +817,12 @@ export default function App() {
               <div className="mt-5 flex justify-between items-center">
                 <div className="flex gap-1.5 overflow-hidden">
                   {project.tags.slice(0, 2).map((tag, tIdx) => (
-                    <span key={tIdx} className="text-[10px] px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/10 shrink-0 font-medium">
+                    <span key={tIdx} className="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0 font-bold">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span className="text-xs text-cyan-400 font-semibold shrink-0 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span className="text-xs text-cyan-400 font-bold shrink-0 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                   Explore <FaChevronRight className="text-[10px]" />
                 </span>
               </div>
@@ -809,17 +831,17 @@ export default function App() {
 
           {/* View More Box */}
           <div 
-            className={`min-w-[240px] rounded-2xl border border-dashed flex flex-col items-center justify-center text-center p-5 transition-all duration-300 snap-start group hover:-translate-y-1 ${
+            className={`min-w-[240px] rounded-2xl border border-dashed flex flex-col items-center justify-center text-center p-5 transition-all duration-300 snap-start group hover:-translate-y-1.5 ${
               darkMode 
-                ? "bg-gradient-to-b from-transparent to-cyan-500/5 border-zinc-800 hover:border-cyan-500" 
-                : "bg-gradient-to-b from-transparent to-cyan-500/5 border-zinc-300 hover:border-cyan-500 shadow-sm"
+                ? "bg-gradient-to-b from-transparent via-cyan-500/5 to-purple-500/5 border-zinc-800 hover:border-cyan-500" 
+                : "bg-gradient-to-b from-transparent via-cyan-500/5 to-purple-500/5 border-zinc-300 hover:border-cyan-500 shadow-sm"
             }`}
           >
             <div className="text-3xl text-cyan-400 mb-3 transform group-hover:scale-110 transition duration-300">
               <FaFolderPlus />
             </div>
             <h3 className={`text-base font-bold ${darkMode ? "text-zinc-200" : "text-zinc-800"}`}>{translations[lang].projectMoreTitle}</h3>
-            <p className={`text-[11px] max-w-[160px] leading-relaxed mb-4 ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>
+            <p className={`text-[11px] max-w-[160px] leading-relaxed mb-4 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
               {translations[lang].projectMoreDesc}
             </p>
             <a 
@@ -838,7 +860,7 @@ export default function App() {
       <section id="certificates" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30">
               <FaAward /> Credentials
             </div>
             <h2 className={`text-2xl font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].certsTitle}</h2>
@@ -853,9 +875,9 @@ export default function App() {
             <div 
               key={cert.id}
               onClick={() => setSelectedCertIndex(index)}
-              className={`min-w-[270px] md:min-w-[320px] rounded-2xl border overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between snap-start hover:-translate-y-1.5 ${
+              className={`min-w-[270px] md:min-w-[320px] rounded-2xl border overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between snap-start hover:-translate-y-2 ${
                 darkMode 
-                  ? "bg-zinc-900/30 border-zinc-800/80 hover:border-cyan-500/60 hover:shadow-lg hover:shadow-cyan-500/10" 
+                  ? "bg-zinc-900/40 border-zinc-800 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/15" 
                   : "bg-white border-zinc-200 shadow-sm hover:border-cyan-500 hover:shadow-md"
               }`}
             >
@@ -864,7 +886,7 @@ export default function App() {
                   <img 
                     src={cert.image} 
                     alt={cert.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                    className="w-full h-full object-cover transform group-hover:scale-108 transition duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
                   <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold text-cyan-300 border border-cyan-500/30">
@@ -888,12 +910,12 @@ export default function App() {
               <div className="p-4 pt-0 flex items-center justify-between">
                 <div className="flex gap-1 overflow-hidden">
                   {cert.tags.slice(0, 2).map((t, idx) => (
-                    <span key={idx} className={`text-[9px] px-2 py-0.5 rounded font-medium ${darkMode ? "bg-zinc-800/50 text-zinc-400" : "bg-zinc-100 text-zinc-600"}`}>
+                    <span key={idx} className={`text-[9px] px-2.5 py-1 rounded-lg font-bold ${darkMode ? "bg-zinc-800/80 text-zinc-300 border border-zinc-700/50" : "bg-zinc-100 text-zinc-600"}`}>
                       {t}
                     </span>
                   ))}
                 </div>
-                <span className="text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                <span className="text-xs font-bold text-cyan-400 group-hover:translate-x-1 transition-transform flex items-center gap-1">
                   <FaExpand className="text-[10px]" /> {translations[lang].certsView}
                 </span>
               </div>
@@ -904,8 +926,8 @@ export default function App() {
 
       {/* Certificate Lightbox Modal Preview */}
       {selectedCert && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn">
-          <div className={`relative rounded-2xl w-full max-w-3xl border overflow-hidden shadow-2xl flex flex-col animate-modal-zoom ${darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-100" : "bg-white border-zinc-200 text-zinc-900"}`}>
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className={`relative rounded-2xl w-full max-w-3xl border overflow-hidden shadow-2xl flex flex-col animate-modal-zoom ${darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-100 shadow-cyan-500/10" : "bg-white border-zinc-200 text-zinc-900"}`}>
             <div className={`flex justify-between items-center p-4 border-b ${darkMode ? "border-zinc-800/60" : "border-zinc-200"}`}>
               <div className="flex items-center gap-2">
                 <FaAward className="text-cyan-400 text-lg" />
@@ -945,8 +967,8 @@ export default function App() {
 
       {/* Popup Project Details Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className={`rounded-2xl w-full max-w-2xl max-h-[90vh] md:max-h-[80vh] border flex flex-col md:flex-row overflow-hidden shadow-xl animate-modal-zoom ${darkMode ? "bg-[#0c0c0e] border-zinc-800" : "bg-white border-zinc-200"}`}>
+        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className={`rounded-2xl w-full max-w-2xl max-h-[90vh] md:max-h-[80vh] border flex flex-col md:flex-row overflow-hidden shadow-xl animate-modal-zoom ${darkMode ? "bg-[#0c0c0e] border-zinc-800 shadow-cyan-500/10" : "bg-white border-zinc-200"}`}>
             <div className="md:w-1/2 p-4 flex items-center justify-center bg-black/5 shrink-0">
               <img src={selectedProject.image} alt={selectedProject.title} className="max-h-[160px] md:max-h-[300px] w-full object-cover rounded-xl shadow-md" />
             </div>
@@ -958,7 +980,7 @@ export default function App() {
                 </p>
                 <div className="flex flex-wrap gap-1.5 mt-4">
                   {selectedProject.tags.map((tag, i) => (
-                    <span key={i} className="text-[10px] px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">
+                    <span key={i} className="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-bold">
                       {tag}
                     </span>
                   ))}
@@ -1003,36 +1025,36 @@ export default function App() {
       <section id="contact" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
         <h2 className={`text-2xl font-bold tracking-tight mb-6 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].contactTitle}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
+          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-500/50 flex flex-col justify-between ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:shadow-xl hover:shadow-cyan-500/10" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-[#ea4335] mb-1.5"><SiMaildotru /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactEmail}</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-400" : "text-zinc-400"}`}>{translations[lang].contactEmail}</span>
             </div>
-            <a href="mailto:kittithat8673@gmail.com" className={`text-xs font-semibold hover:underline break-all mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>kittithat8673@gmail.com</a>
+            <a href="mailto:kittithat8673@gmail.com" className={`text-xs font-semibold hover:underline break-all mt-2 ${darkMode ? "text-zinc-200" : "text-zinc-700"}`}>kittithat8673@gmail.com</a>
           </div>
           
-          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
+          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-500/50 flex flex-col justify-between ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:shadow-xl hover:shadow-cyan-500/10" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
-              <div className="text-lg text-zinc-400 dark:text-zinc-200 mb-1.5"><FaGithub /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactGithub}</span>
+              <div className="text-lg text-zinc-300 dark:text-zinc-200 mb-1.5"><FaGithub /></div>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-400" : "text-zinc-400"}`}>{translations[lang].contactGithub}</span>
             </div>
-            <a href="https://github.com/icekung11" target="_blank" rel="noreferrer" className={`text-xs font-semibold hover:underline mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>icekung11</a>
+            <a href="https://github.com/icekung11" target="_blank" rel="noreferrer" className={`text-xs font-semibold hover:underline mt-2 ${darkMode ? "text-zinc-200" : "text-zinc-700"}`}>icekung11</a>
           </div>
           
-          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
+          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-500/50 flex flex-col justify-between ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:shadow-xl hover:shadow-cyan-500/10" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-[#e1306c] mb-1.5"><FaInstagram /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactInstagram}</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-400" : "text-zinc-400"}`}>{translations[lang].contactInstagram}</span>
             </div>
-            <span className={`text-xs font-semibold mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>icekung_114</span>
+            <span className={`text-xs font-semibold mt-2 ${darkMode ? "text-zinc-200" : "text-zinc-700"}`}>icekung_114</span>
           </div>
           
-          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 flex flex-col justify-between ${darkMode ? "bg-zinc-900/20 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
+          <div className={`p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-500/50 flex flex-col justify-between ${darkMode ? "bg-zinc-900/40 border-zinc-800 hover:shadow-xl hover:shadow-cyan-500/10" : "bg-white border-zinc-200 shadow-sm"}`}>
             <div>
               <div className="text-lg text-green-500 mb-1.5"><FaPhoneAlt /></div>
-              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-500" : "text-zinc-400"}`}>{translations[lang].contactPhone}</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wider ${darkMode ? "text-zinc-400" : "text-zinc-400"}`}>{translations[lang].contactPhone}</span>
             </div>
-            <span className={`text-xs font-semibold mt-2 ${darkMode ? "text-zinc-300" : "text-zinc-700"}`}>081-146-8673</span>
+            <span className={`text-xs font-semibold mt-2 ${darkMode ? "text-zinc-200" : "text-zinc-700"}`}>081-146-8673</span>
           </div>
         </div>
       </section>
@@ -1040,15 +1062,15 @@ export default function App() {
       {/* Comments Section */}
       <section id="comments" className={`max-w-5xl mx-auto px-6 md:px-12 py-16 border-t ${darkMode ? "border-zinc-900" : "border-zinc-200"}`}>
         <h2 className={`text-2xl font-bold tracking-tight mb-6 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].guestbookTitle}</h2>
-        <div className={`p-5 rounded-2xl border ${darkMode ? "bg-zinc-900/10 border-zinc-850" : "bg-white border-zinc-200 shadow-sm"}`}>
+        <div className={`p-6 rounded-2xl border backdrop-blur-md ${darkMode ? "bg-zinc-900/30 border-zinc-800 shadow-xl" : "bg-white border-zinc-200 shadow-sm"}`}>
           <input
             type="text"
             placeholder={translations[lang].guestbookNamePlaceholder}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={`w-full p-3.5 rounded-xl mb-3 border text-xs outline-none transition-colors ${
+            className={`w-full p-3.5 rounded-xl mb-3 border text-xs outline-none transition-all ${
               darkMode 
-                ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500" 
+                ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500 focus:shadow-md focus:shadow-cyan-500/10" 
                 : "bg-white border-zinc-300 text-zinc-900 focus:border-cyan-600"
             }`}
           />
@@ -1056,13 +1078,13 @@ export default function App() {
             placeholder={translations[lang].guestbookMsgPlaceholder}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className={`w-full h-28 p-3.5 rounded-xl border text-xs outline-none transition-colors resize-none ${
+            className={`w-full h-28 p-3.5 rounded-xl border text-xs outline-none transition-all resize-none ${
               darkMode 
-                ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500" 
+                ? "bg-zinc-950 border-zinc-800 text-zinc-100 focus:border-cyan-500 focus:shadow-md focus:shadow-cyan-500/10" 
                 : "bg-white border-zinc-300 text-zinc-900 focus:border-cyan-600"
             }`}
           />
-          <button onClick={sendMessage} className="mt-2 text-white font-bold btn-shimmer px-6 py-3 rounded-xl text-xs hover:opacity-95 transition-all shadow-md">
+          <button onClick={sendMessage} className="mt-2 text-white font-bold btn-shimmer px-6 py-3 rounded-xl text-xs hover:opacity-95 transition-all shadow-lg hover:scale-105">
             {translations[lang].guestbookSendBtn}
           </button>
           
