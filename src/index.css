@@ -15,6 +15,7 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Animations */
 @keyframes floatMascot {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -30,8 +31,37 @@ body {
     transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(1.05);
+    opacity: 0.28;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes modalZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(10px);
   }
 }
 
@@ -41,6 +71,41 @@ body {
 
 .animate-pulse-glow {
   animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.animate-modal-zoom {
+  animation: modalZoom 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-particle-1 {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+.animate-particle-2 {
+  animation: floatParticle 11s ease-in-out infinite 2s;
+}
+
+.animate-particle-3 {
+  animation: floatParticle 9s ease-in-out infinite 4s;
+}
+
+/* Shimmer Button Effect */
+.btn-shimmer {
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    90deg, 
+    #06b6d4 0%, 
+    #a855f7 35%, 
+    #ec4899 50%, 
+    #a855f7 65%, 
+    #06b6d4 100%
+  );
+  transition: all 0.5s ease;
+}
+
+.btn-shimmer:hover {
+  background-position: right center;
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
 }
 
 /* Custom Scrollbar */
