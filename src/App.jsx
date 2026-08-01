@@ -669,29 +669,27 @@ export default function App() {
           </div>
         </div>
 
-        {/* Profile Picture Frame with Animated Neon Ring */}
+        {/* Profile Picture Frame */}
         <div className="md:col-span-2 flex justify-center order-first md:order-last">
-          <div className="animated-border-ring">
-            <div className={`animated-border-inner relative w-full max-w-[280px] p-3.5 rounded-[28px] border transition-all duration-500 ${darkMode ? "bg-zinc-950 border-zinc-800/80 shadow-2xl" : "bg-white border-zinc-200 shadow-lg"}`}>
-              <div className="relative overflow-hidden rounded-[20px] group">
-                <img
-                  src={baseAsset("profile.jpg")}
-                  alt="Profile"
-                  className="w-full h-[330px] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 text-white text-xs font-medium">
-                  ✨ Computer Engineering Student @ SWU
-                </div>
+          <div className={`relative w-full max-w-[280px] p-3.5 rounded-[28px] border transition-all duration-500 hover:scale-[1.02] ${darkMode ? "bg-zinc-900/40 border-cyan-500/30 shadow-2xl shadow-cyan-500/10 hover:border-cyan-400" : "bg-white border-zinc-200 shadow-xl hover:border-cyan-400"}`}>
+            <div className="relative overflow-hidden rounded-[20px] group">
+              <img
+                src={baseAsset("profile.jpg")}
+                alt="Profile"
+                className="w-full h-[330px] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 text-white text-xs font-medium">
+                ✨ Computer Engineering Student @ SWU
               </div>
-              <div className="mt-4 text-center">
-                <h3 className={`text-lg font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].profileName}</h3>
-                <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
-                  {translations[lang].profileUni} 
-                </p>
-                <p className={`text-xs ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
-                  {translations[lang].profileSub}
-                </p>
-              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <h3 className={`text-lg font-bold tracking-tight ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{translations[lang].profileName}</h3>
+              <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-400" : "text-zinc-500"}`}>
+                {translations[lang].profileUni} 
+              </p>
+              <p className={`text-xs ${darkMode ? "text-zinc-500" : "text-zinc-600"}`}>
+                {translations[lang].profileSub}
+              </p>
             </div>
           </div>
         </div>

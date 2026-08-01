@@ -23,36 +23,6 @@ body {
   background-size: 40px 40px;
 }
 
-/* Glowing Border Animation */
-@keyframes spinBorder {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animated-border-ring {
-  position: relative;
-}
-
-.animated-border-ring::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 32px;
-  background: linear-gradient(45deg, #06b6d4, #a855f7, #ec4899, #06b6d4);
-  animation: spinBorder 6s linear infinite;
-  z-index: 0;
-  opacity: 0.85;
-}
-
-.animated-border-inner {
-  position: relative;
-  z-index: 1;
-}
-
 /* Animations */
 @keyframes floatMascot {
   0%, 100% {
