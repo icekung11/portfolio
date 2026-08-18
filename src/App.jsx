@@ -89,7 +89,7 @@ const projects = {
     },
     {
       title: "Electrical Circuit Simulation and Analysis",
-      desc: "This study analyzes and simulates the electrical behavior of three basic circuit types: RC circuit, Transistor switching circuits, and RLC circuits, and diode-capacitor circuits.",
+      desc: "This study analyzes and simulates the electrical behavior of three basic circuit types: RC circuit, Transistor switching circuits, and diode-capacitor circuits.",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
       tags: ["Transistor", "Diode", "Circuit Analysis", "Capacitor", "RC"],
       links: [
@@ -125,7 +125,7 @@ const projects = {
     },
     {
       title: "การจำลองและวิเคราะห์วงจรไฟฟ้า",
-      desc: "การศึกษาวิเคราะห์และจำลองพฤติกรรมทางไฟฟ้าของวงจรพื้นฐาน 3 ประเภท: วงจร RC, วงจรสวิตชิ่งทรานซิสเตอร์, วงจร RLC และวงจรไดโอด-แคพาซิเตอร์",
+      desc: "การศึกษาวิเคราะห์และจำลองพฤติกรรมทางไฟฟ้าของวงจรพื้นฐาน 3 ประเภท: วงจร RC, วงจรสวิตชิ่งทรานซิสเตอร์ และวงจรไดโอด-คาปาซิเตอร์",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
       tags: ["ทรานซิสเตอร์", "ไดโอด", "การวิเคราะห์วงจร", "ตัวเก็บประจุ", "RC"],
       links: [
