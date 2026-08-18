@@ -682,7 +682,7 @@ export default function App() {
         </div>
 
         {/* Profile Picture Frame */}
-        <div className="md:col-span-2 flex justify-center order-first md:order-last">
+        <div className="md:col-span-2 flex justify-center order-first md:order-last md:pt-6">
           <div className={`relative w-full max-w-[280px] p-3.5 rounded-[28px] border transition-all duration-500 hover:scale-[1.02] ${darkMode ? "bg-zinc-900/40 border-cyan-500/30 shadow-2xl shadow-cyan-500/10 hover:border-cyan-400" : "bg-white border-zinc-200 shadow-xl hover:border-cyan-400"}`}>
             <div className="relative overflow-hidden rounded-[20px] group">
               <img
