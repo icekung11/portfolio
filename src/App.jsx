@@ -776,7 +776,7 @@ export default function App() {
                     <div className="text-2xl transform group-hover:scale-125 transition duration-300 shrink-0">
                       {skill.icon}
                     </div>
-                    <span className={`text-xs font-bold truncate transition-colors ${darkMode ? "text-zinc-300 group-hover:text-cyan-400" : "text-zinc-700 group-hover:text-cyan-600"}`}>
+                    <span className={`text-xs font-bold whitespace-normal leading-tight transition-colors ${darkMode ? "text-zinc-300 group-hover:text-cyan-400" : "text-zinc-700 group-hover:text-cyan-600"}`}>
                       {skillNames[lang][skill.name] || skill.name}
                     </span>
                   </div>
@@ -818,15 +818,15 @@ export default function App() {
                     Project #{index + 1}
                   </span>
                 </div>
-                <h3 className={`text-lg font-bold tracking-tight mb-2 truncate transition-colors group-hover:text-cyan-400 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{project.title}</h3>
-                <p className={`text-xs leading-relaxed line-clamp-4 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                <h3 className={`text-base md:text-lg font-bold tracking-tight mb-2 leading-snug break-words transition-colors group-hover:text-cyan-400 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>{project.title}</h3>
+                <p className={`text-xs leading-relaxed ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
                   {project.desc}
                 </p>
               </div>
 
-              <div className="mt-5 flex justify-between items-center">
-                <div className="flex gap-1.5 overflow-hidden">
-                  {project.tags.slice(0, 2).map((tag, tIdx) => (
+              <div className="mt-5 flex justify-between items-center gap-2">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.slice(0, 3).map((tag, tIdx) => (
                     <span key={tIdx} className="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shrink-0 font-bold">
                       {tag}
                     </span>
@@ -908,18 +908,18 @@ export default function App() {
                 </div>
 
                 <div className="p-4">
-                  <h3 className={`text-sm font-bold leading-snug mb-2 line-clamp-2 transition-colors group-hover:text-cyan-400 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
+                  <h3 className={`text-sm font-bold leading-snug mb-2 break-words transition-colors group-hover:text-cyan-400 ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
                     {cert.title}
                   </h3>
-                  <p className={`text-[11px] leading-relaxed line-clamp-3 mb-3 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  <p className={`text-[11px] leading-relaxed mb-3 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
                     {cert.desc}
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 pt-0 flex items-center justify-between">
-                <div className="flex gap-1 overflow-hidden">
-                  {cert.tags.slice(0, 2).map((t, idx) => (
+              <div className="p-4 pt-0 flex items-center justify-between gap-2">
+                <div className="flex flex-wrap gap-1">
+                  {cert.tags.slice(0, 3).map((t, idx) => (
                     <span key={idx} className={`text-[9px] px-2.5 py-1 rounded-lg font-bold ${darkMode ? "bg-zinc-800/80 text-zinc-300 border border-zinc-700/50" : "bg-zinc-100 text-zinc-600"}`}>
                       {t}
                     </span>
