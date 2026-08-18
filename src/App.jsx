@@ -171,13 +171,13 @@ const certificates = {
       tags: ["Cybersecurity", "Ethical Hacking"]
     },
     {
-      id: "cert-fullstack",
-      title: "Full Stack Web Application Architecture",
-      issuer: "Modern Web Engineering Academy",
+      id: "cert-Generative AI Foundation Program",
+      title: "AWS Generative AI Foundation Program including KIRO Challenge",
+      issuer: "AWS, gosoft ,depa , ERT",
       date: "2026",
-      image: baseAsset("cert_fullstack.jpg"),
-      desc: "Course completion in React application development, Vite tooling, Tailwind UI components, and Firebase database integration.",
-      tags: ["React", "Full Stack", "Firebase"]
+      image: baseAsset("cert_aws.jpg"),
+      desc: "Course completion in Generative AI foundation program, including KIRO Challenge and practical applications.",
+      tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
     },
     {
       id: "cert-circuits",
@@ -209,13 +209,13 @@ const certificates = {
       tags: ["Cybersecurity", "Ethical Hacking"]
     },
     {
-      id: "cert-fullstack",
-      title: "สถาปัตยกรรมเว็บแอปพลิเคชัน Full Stack & React",
-      issuer: "สถาบันพัฒนาซอฟต์แวร์และเว็บสมัยใหม่",
+      id: "cert-Generative AI Foundation Program",
+      title: "AWS Generative AI Foundation Program including KIRO Challenge",
+      issuer: "AWS, gosoft ,depa , ERT",
       date: "2026",
-      image: baseAsset("cert_fullstack.jpg"),
-      desc: "ใบรับรองการผ่านหลักสูตรพัฒนาเว็บแอปพลิเคชันด้วย React, Vite, Tailwind CSS และ Firebase",
-      tags: ["React", "Full Stack", "Firebase"]
+      image: baseAsset("cert_aws.jpg"),
+      desc: "ใบรับรองการผ่านการเรียนรู้ Generative AI Foundation Program รวมถึง KIRO Challenge และการประยุกต์ใช้งานจริง",
+      tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
     },
     {
       id: "cert-circuits",
