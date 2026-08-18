@@ -175,7 +175,7 @@ const certificates = {
       title: "AWS Generative AI Foundation Program including KIRO Challenge",
       issuer: "AWS, gosoft, depa, ERT",
       date: "2026",
-      image: baseAsset("cert_fullstack.jpg"),
+      image: baseAsset("cert_aws.jpg"),
       desc: "Course completion in Generative AI foundation program, including KIRO Challenge and practical applications.",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
     },
@@ -231,7 +231,7 @@ const certificates = {
       title: "AWS Generative AI Foundation Program including KIRO Challenge",
       issuer: "AWS, gosoft, depa, ERT",
       date: "2026",
-      image: baseAsset("cert_fullstack.jpg"),
+      image: baseAsset("cert_aws.jpg"),
       desc: "ใบรับรองการผ่านการเรียนรู้ Generative AI Foundation Program รวมถึง KIRO Challenge และการประยุกต์ใช้งานจริง",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
     },
