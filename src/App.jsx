@@ -545,7 +545,7 @@ export default function App() {
       <nav className={`px-6 md:px-12 py-4 border-b backdrop-blur-md sticky top-0 z-40 transition-colors ${darkMode ? "border-zinc-800/60 bg-[#09090b]/85 text-zinc-100" : "border-zinc-200 bg-[#fafafa]/90 text-zinc-900 shadow-sm"}`}>
         <div className="max-w-5xl mx-auto flex justify-between items-center w-full">
           <a href="#top" className="text-xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 hover:opacity-90 transition group flex items-center gap-1">
-            KITTITHAT.D<span className="text-cyan-400 group-hover:animate-ping">.</span>
+            KITTITHAT.D
           </a>
 
           {/* Desktop Navigation Links with Active Highlighting */}
