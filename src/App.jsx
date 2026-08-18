@@ -173,9 +173,9 @@ const certificates = {
     {
       id: "cert-Generative AI Foundation Program",
       title: "AWS Generative AI Foundation Program including KIRO Challenge",
-      issuer: "AWS, gosoft ,depa , ERT",
+      issuer: "AWS, gosoft, depa, ERT",
       date: "2026",
-      image: baseAsset("cert_aws.jpg"),
+      image: baseAsset("cert_fullstack.jpg"),
       desc: "Course completion in Generative AI foundation program, including KIRO Challenge and practical applications.",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
     },
@@ -187,6 +187,24 @@ const certificates = {
       image: baseAsset("cert_circuits.jpg"),
       desc: "Course completion in Transient Response numerical simulation (RL, RC, RLC), Kirchhoff's laws, and digital logic gates.",
       tags: ["Digital Logic", "Circuits", "Electronics"]
+    },
+    {
+      id: "cert-python",
+      title: "Python Scientific Computing & Fourier Analysis",
+      issuer: "Engineering Computation Board",
+      date: "2025",
+      image: baseAsset("cert_python.jpg"),
+      desc: "Course completion in numerical Fourier coefficient calculations, SciPy integration, and mathematical modeling.",
+      tags: ["Python", "SciPy", "Math Modeling"]
+    },
+    {
+      id: "cert-linux",
+      title: "Linux Systems & Network Architecture",
+      issuer: "Systems Engineering Institute",
+      date: "2025",
+      image: baseAsset("cert_linux.jpg"),
+      desc: "Course completion in Linux Administration basics, Shell Scripting, Network Concepts, and System Infrastructure fundamentals.",
+      tags: ["Linux", "Networking", "Systems Basics"]
     }
   ],
   th: [
@@ -211,9 +229,9 @@ const certificates = {
     {
       id: "cert-Generative AI Foundation Program",
       title: "AWS Generative AI Foundation Program including KIRO Challenge",
-      issuer: "AWS, gosoft ,depa , ERT",
+      issuer: "AWS, gosoft, depa, ERT",
       date: "2026",
-      image: baseAsset("cert_aws.jpg"),
+      image: baseAsset("cert_fullstack.jpg"),
       desc: "ใบรับรองการผ่านการเรียนรู้ Generative AI Foundation Program รวมถึง KIRO Challenge และการประยุกต์ใช้งานจริง",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
     },
@@ -225,6 +243,24 @@ const certificates = {
       image: baseAsset("cert_circuits.jpg"),
       desc: "ใบรับรองการผ่านหลักสูตรจำลองการตอบสนองชั่วครู่ (Transient Responses) และตรรกศาสตร์ดิจิทัล",
       tags: ["ตรรกศาสตร์ดิจิทัล", "วิเคราะห์วงจร", "อิเล็กทรอนิกส์"]
+    },
+    {
+      id: "cert-python",
+      title: "การประมวลผลคณิตศาสตร์ & อนุกรมฟูเรียร์ด้วย Python",
+      issuer: "สถาบันคำนวณและจำลองทางวิศวกรรม",
+      date: "2025",
+      image: baseAsset("cert_python.jpg"),
+      desc: "ใบรับรองการผ่านหลักสูตรคำนวณสัมประสิทธิ์อนุกรมฟูเรียร์เชิงตัวเลขและการใช้งาน Python SciPy",
+      tags: ["Python", "SciPy", "คณิตศาสตร์วิศวกรรม"]
+    },
+    {
+      id: "cert-linux",
+      title: "ระบบปฏิบัติการ Linux & โครงสร้างพื้นฐานเครือข่าย",
+      issuer: "สถาบันวิศวกรรมระบบและระบบเครือข่าย",
+      date: "2025",
+      image: baseAsset("cert_linux.jpg"),
+      desc: "ใบรับรองการผ่านหลักสูตรเรียนรู้ระบบปฏิบัติการ Linux, Shell Scripting และพื้นฐานระบบเครือข่าย",
+      tags: ["Linux", "ระบบเครือข่าย", "วิศวกรรมระบบ"]
     }
   ]
 };
