@@ -80,7 +80,7 @@ const projects = {
     {
       title: "Fourier Series Calculator & Plotter",
       desc: "A Python desktop application built with Tkinter, NumPy, SciPy, and Matplotlib. It computes Fourier coefficients using numerical integration and dynamically visualizes the convergence of trigonometric series against original periodic functions, supporting both single and piecewise functions.",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=80",
       tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "Math Modeling"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("fourier_report.pdf") },
@@ -88,21 +88,27 @@ const projects = {
       ]
     },
     {
-      title: "DropHere: E-Waste Management",
-      desc: "An application concept designed to track and optimize electronic waste disposal locations. Integrated mapping and hardware life-cycle algorithms to help local communities and students manage scrap efficiently.",
-      image: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=600&auto=format&fit=crop&q=60",
-      tags: ["Android Studio", "Java", "Firebase", "System Design"]
+      title: "Electrical Circuit Simulation and Analysis",
+      desc: "This study analyzes and simulates the electrical behavior of three basic circuit types: RC circuit, Transistor switching circuits, and RLC circuits, and diode-capacitor circuits.",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+      tags: ["Transistor", "Diode", "Circuit Analysis", "Capacitor", "RC"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: baseAsset("circuit_report.pdf") }
+      ]
     },
     {
-      title: "Credit Risk Predictive ML Model",
-      desc: "Implemented and compared Logistic Regression and Support Vector Machine (SVM) algorithms using the German Credit dataset. Focused on log transformations and balancing high precision/recall metrics for imbalanced data analysis.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60",
-      tags: ["Python", "Machine Learning", "Data Science", "Scikit-Learn"]
+      title: "Kijhub Application",
+      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80",
+      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") }
+      ]
     },
     {
       title: "Transient Response Circuit Analyzer",
       desc: "Developed a computational script using numerical methods to analyze and simulate Transient Responses in complex RL, RC, and RLC networks utilizing Kirchhoff's laws, Nodal/Mesh analysis, and matrix operations.",
-      image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80",
       tags: ["Python", "Circuit Analysis", "Engineering Math"]
     }
   ],
@@ -110,7 +116,7 @@ const projects = {
     {
       title: "เครื่องคำนวณและวาดกราฟอนุกรมฟูเรียร์",
       desc: "แอปพลิเคชันเดสก์ท็อป Python ที่พัฒนาขึ้นด้วย Tkinter, NumPy, SciPy และ Matplotlib คำนวณสัมประสิทธิ์อนุกรมฟูเรียร์ด้วยการหาปริพันธ์เชิงตัวเลขและแสดงภาพความสอดคล้องและการลู่เข้าของอนุกรมตรีโกณมิติเปรียบเทียบกับฟังก์ชันคาบดั้งเดิม รองรับทั้งฟังก์ชันเดี่ยวและฟังก์ชันเป็นช่วง",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&auto=format&fit=crop&q=60",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=80",
       tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "การจำลองทางคณิตศาสตร์"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("fourier_report.pdf") },
@@ -118,21 +124,27 @@ const projects = {
       ]
     },
     {
-      title: "DropHere: การจัดการขยะอิเล็กทรอนิกส์",
-      desc: "แนวคิดแอปพลิเคชันที่ออกแบบมาเพื่อติดตามและเพิ่มประสิทธิภาพจุดทิ้งขยะอิเล็กทรอนิกส์ มีการผสานรวมแผนที่และอัลกอริทึมการคำนวณวงจรชีวิตของฮาร์ดแวร์เพื่อช่วยให้ชุมชนและนักศึกษาจัดการขยะได้อย่างคุ้มค่าและปลอดภัย",
-      image: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=600&auto=format&fit=crop&q=60",
-      tags: ["Android Studio", "Java", "Firebase", "การออกแบบระบบ"]
+      title: "การจำลองและวิเคราะห์วงจรไฟฟ้า",
+      desc: "การศึกษาวิเคราะห์และจำลองพฤติกรรมทางไฟฟ้าของวงจรพื้นฐาน 3 ประเภท: วงจร RC, วงจรสวิตชิ่งทรานซิสเตอร์, วงจร RLC และวงจรไดโอด-แคพาซิเตอร์",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+      tags: ["ทรานซิสเตอร์", "ไดโอด", "การวิเคราะห์วงจร", "ตัวเก็บประจุ", "RC"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("circuit_report.pdf") }
+      ]
     },
     {
-      title: "แบบจำลอง ML ทำนายความเสี่ยงเครดิต",
-      desc: "พัฒนาและเปรียบเทียบอัลกอริทึมการถดถอยโลจิสติก (Logistic Regression) และซัปพอร์ตเวกเตอร์แมชชีน (SVM) โดยใช้ชุดข้อมูลสินเชื่อเยอรมัน เน้นที่การแปลงลอการิทึมและการปรับความแม่นยำและระดับการระลึกในชุดข้อมูลที่ไม่สมดุล",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60",
-      tags: ["Python", "การเรียนรู้ของเครื่อง", "วิทยาการข้อมูล", "Scikit-Learn"]
+      title: "แอปพลิเคชัน Kijhub",
+      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80",
+      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") }
+      ]
     },
     {
       title: "เครื่องวิเคราะห์วงจรตอบสนองชั่วครู่",
       desc: "พัฒนาสคริปต์คำนวณโดยใช้วิธีเชิงตัวเลขเพื่อวิเคราะห์และจำลองการตอบสนองชั่วครู่ (Transient Responses) ในวงจรเครือข่าย RL, RC และ RLC ที่มีความซับซ้อนตามกฎของ Kirchhoff การวิเคราะห์โหนด/เมช และการคำนวณเมทริกซ์",
-      image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80",
       tags: ["Python", "การวิเคราะห์วงจร", "คณิตศาสตร์วิศวกรรม"]
     }
   ]
@@ -141,22 +153,22 @@ const projects = {
 const certificates = {
   en: [
     {
-      id: "cert-linux",
-      title: "Linux Systems & Network Architecture",
-      issuer: "Systems Engineering Institute",
-      date: "2025",
-      image: baseAsset("cert_linux.jpg"),
-      desc: "Course completion in Linux Administration basics, Shell Scripting, Network Concepts, and System Infrastructure fundamentals.",
-      tags: ["Linux", "Networking", "Systems Basics"]
+      id: "cert-Foundation AI (theory)",
+      title: "AI & Machine Learning Foundations (Theory)",
+      issuer: "Artificial Intelligence Association of Thailand",
+      date: "2026",
+      image: baseAsset("Ai_theory.png"),
+      desc: "Course completion in AI and Machine Learning foundations, including theory and applications.",
+      tags: ["AI", "Machine Learning", "Theory", "Computer Vision"]
     },
     {
-      id: "cert-python",
-      title: "Python Scientific Computing & Fourier Analysis",
-      issuer: "Engineering Computation Board",
+      id: "cert-Ethical Hacker",
+      title: "Ethical Hacking & Cybersecurity",
+      issuer: "Cisco Networking Academy program and National Cyber Security Agency",
       date: "2025",
-      image: baseAsset("cert_python.jpg"),
-      desc: "Course completion in numerical Fourier coefficient calculations, SciPy integration, and mathematical modeling.",
-      tags: ["Python", "SciPy", "Math Modeling"]
+      image: baseAsset("Ethical_Hacker.png"),
+      desc: "Course completion in ethical hacking techniques and cybersecurity principles.",
+      tags: ["Cybersecurity", "Ethical Hacking"]
     },
     {
       id: "cert-fullstack",
@@ -179,22 +191,22 @@ const certificates = {
   ],
   th: [
     {
-      id: "cert-linux",
-      title: "ระบบปฏิบัติการ Linux & โครงสร้างพื้นฐานเครือข่าย",
-      issuer: "สถาบันวิศวกรรมระบบและระบบเครือข่าย",
+      id: "cert-Foundation AI (theory)",
+      title: "รากฐานปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง (ทฤษฎี)",
+      issuer: "สมาคมปัญญาประดิษฐ์แห่งประเทศไทย",
       date: "2025",
-      image: baseAsset("cert_linux.jpg"),
-      desc: "ใบรับรองการผ่านหลักสูตรเรียนรู้ระบบปฏิบัติการ Linux, Shell Scripting และพื้นฐานระบบเครือข่าย",
-      tags: ["Linux", "ระบบเครือข่าย", "วิศวกรรมระบบ"]
+      image: baseAsset("Ai_theory.png"),
+      desc: "การผ่านหลักสูตรรากฐานปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง รวมถึงทฤษฎีและการประยุกต์ใช้งาน",
+      tags: ["ปัญญาประดิษฐ์", "การเรียนรู้ของเครื่อง", "ทฤษฎี", "การประมวลผลภาพ"]
     },
     {
-      id: "cert-python",
-      title: "การประมวลผลคณิตศาสตร์ & อนุกรมฟูเรียร์ด้วย Python",
-      issuer: "สถาบันคำนวณและจำลองทางวิศวกรรม",
+      id: "cert-Ethical Hacker",
+      title: "นักเจาะระบบเชิงจริยธรรมและความปลอดภัยไซเบอร์",
+      issuer: "Cisco Networking Academy และ สำนักงานความมั่นคงปลอดภัยไซเบอร์แห่งชาติ",
       date: "2025",
-      image: baseAsset("cert_python.jpg"),
-      desc: "ใบรับรองการผ่านหลักสูตรคำนวณสัมประสิทธิ์อนุกรมฟูเรียร์เชิงตัวเลขและการใช้งาน Python SciPy",
-      tags: ["Python", "SciPy", "คณิตศาสตร์วิศวกรรม"]
+      image: baseAsset("Ethical_Hacker.png"),
+      desc: "ใบรับรองการผ่านหลักสูตรเทคนิคการเจาะระบบเชิงจริยธรรมและหลักการรักษาความปลอดภัยไซเบอร์",
+      tags: ["Cybersecurity", "Ethical Hacking"]
     },
     {
       id: "cert-fullstack",
