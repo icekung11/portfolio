@@ -635,7 +635,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24 grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+      <section className="relative max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24 grid md:grid-cols-5 gap-8 md:gap-12 items-start">
         <div className="md:col-span-3 text-center md:text-left">
           <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4 border backdrop-blur-md ${darkMode ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-400 shadow-lg shadow-cyan-500/10" : "bg-cyan-50 border-cyan-200 text-cyan-700 shadow-sm"}`}>
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
