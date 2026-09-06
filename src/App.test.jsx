@@ -6,7 +6,7 @@ import App from './App.jsx';
 // ---------------------------------------------------------
 // 🛠️ สเต็ป 1: สร้าง Firebase ปลอม (Mocking)
 // ---------------------------------------------------------
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc } from 'firebase/firestore';
 
 vi.mock('firebase/firestore', () => {
   return {

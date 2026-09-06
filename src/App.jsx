@@ -413,7 +413,7 @@ export default function App() {
     if (typeof window !== "undefined" && typeof window.localStorage !== "undefined" && window.localStorage !== null) {
       try {
         return localStorage.getItem("portfolio-lang") || "en";
-      } catch (e) {
+      } catch {
         return "en";
       }
     }
@@ -491,13 +491,13 @@ export default function App() {
     if (typeof window !== "undefined" && typeof window.localStorage !== "undefined" && window.localStorage !== null) {
       try {
         localStorage.setItem("portfolio-lang", nextLang);
-      } catch (e) {
+      } catch {
         // Silently ignore storage errors
       }
     }
   };
 
-  const handleDogClick = (e) => {
+  const handleDogClick = () => {
     setDogBubbleOpen(true);
     setDogTipIndex((prev) => (prev + 1) % translations[lang].dogTips.length);
 

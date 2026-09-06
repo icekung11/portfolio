@@ -14,15 +14,14 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-M9RPJC7VZL"
 };
 
-let app = null;
 let db = null;
 
 try {
-  app = initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig);
   if (typeof window !== "undefined") {
     try {
       getAnalytics(app);
-    } catch (e) {
+    } catch {
       // Analytics non-critical error swallowed
     }
   }
