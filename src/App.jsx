@@ -448,6 +448,7 @@ export default function App() {
   // Interactive Dog Mascot State
   const [dogTipIndex, setDogTipIndex] = useState(0);
   const [dogBubbleOpen, setDogBubbleOpen] = useState(true);
+  const [sparkles, setSparkles] = useState([]);
 
   const selectedProject = selectedProjectIndex !== null ? projects[lang][selectedProjectIndex] : null;
   const selectedCert = selectedCertIndex !== null ? certificates[lang][selectedCertIndex] : null;
@@ -507,6 +508,15 @@ export default function App() {
   const handleDogClick = () => {
     setDogBubbleOpen(true);
     setDogTipIndex((prev) => (prev + 1) % translations[lang].dogTips.length);
+    const newSparkle = {
+      id: Date.now() + Math.random(),
+      x: (Math.random() - 0.5) * 50,
+      y: (Math.random() - 0.5) * 50 - 20,
+    };
+    setSparkles((prev) => [...prev.slice(-6), newSparkle]);
+    setTimeout(() => {
+      setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
+    }, 900);
   };
 
   const scrollToTop = () => {
@@ -543,28 +553,29 @@ export default function App() {
           : "overflow-x-hidden min-h-screen font-sans text-zinc-900 bg-[#f8fafc] transition-colors duration-300 relative"
       }
     >
-      {/* Subtle Interactive Mouse Glow Spotlight */}
+      {/* Interactive Mouse Glow Spotlight */}
       <div 
-        className={`fixed w-[360px] h-[360px] rounded-full pointer-events-none transition-transform duration-100 ease-out z-0 hidden lg:block ${
-          darkMode ? "bg-blue-500/5 blur-[100px]" : "bg-blue-500/10 blur-[90px]"
+        className={`fixed w-[420px] h-[420px] rounded-full pointer-events-none transition-transform duration-75 ease-out z-0 hidden lg:block ${
+          darkMode ? "bg-blue-600/10 blur-[110px]" : "bg-blue-500/15 blur-[95px]"
         }`}
         style={{
-          transform: `translate(${mousePos.x - 180}px, ${mousePos.y - 180}px)`
+          transform: `translate(${mousePos.x - 210}px, ${mousePos.y - 210}px)`
         }}
       />
 
       {/* Clean Scroll Progress Bar at Top */}
-      <div className="fixed top-0 left-0 right-0 h-0.5 z-50 bg-transparent pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-transparent pointer-events-none">
         <div 
-          className="h-full bg-blue-600 transition-all duration-150"
+          className="h-full bg-blue-600 shadow-[0_0_12px_rgba(37,99,235,0.8)] transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      {/* Subtle Ambient Background Tones */}
+      {/* Ambient Background Glowing Particles & Orbs */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className={`absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-[160px] ${darkMode ? "bg-blue-900/10" : "bg-blue-400/10"}`} />
-        <div className={`absolute bottom-1/3 right-10 w-[450px] h-[450px] rounded-full blur-[160px] ${darkMode ? "bg-zinc-800/15" : "bg-zinc-200/40"}`} />
+        <div className={`absolute top-10 left-1/4 w-[500px] h-[500px] rounded-full blur-[140px] animate-pulse-glow ${darkMode ? "bg-blue-600/10" : "bg-blue-400/15"}`} />
+        <div className={`absolute top-1/3 right-10 w-[420px] h-[420px] rounded-full blur-[150px] animate-particle-1 ${darkMode ? "bg-blue-800/10" : "bg-blue-300/20"}`} />
+        <div className={`absolute bottom-20 left-10 w-[380px] h-[380px] rounded-full blur-[140px] animate-particle-2 ${darkMode ? "bg-zinc-800/20" : "bg-zinc-200/50"}`} />
       </div>
 
       {/* Navbar */}
@@ -663,8 +674,11 @@ export default function App() {
       {/* Hero Section */}
       <section className="relative max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20 lg:py-24 grid md:grid-cols-5 gap-8 md:gap-12 items-center">
         <div className="md:col-span-3 text-center md:text-left">
-          <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4 border ${darkMode ? "bg-zinc-900 border-zinc-800 text-zinc-300" : "bg-blue-50 border-blue-200 text-blue-800 shadow-sm"}`}>
-            <span className={`w-2 h-2 rounded-full ${darkMode ? "bg-blue-400" : "bg-blue-600"}`}></span>
+          <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium mb-4 border transition-all ${darkMode ? "bg-zinc-900/90 border-zinc-800 text-zinc-300" : "bg-blue-50 border-blue-200 text-blue-800 shadow-sm"}`}>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
             {translations[lang].heroSub}
           </div>
           <h1 className={`text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.15] ${darkMode ? "text-zinc-100" : "text-zinc-900"}`}>
@@ -698,7 +712,7 @@ export default function App() {
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4 text-sm font-semibold">
-            <a href="#projects" className="px-6 py-3.5 rounded-xl text-white font-semibold bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-600/20 hover:scale-[1.02] transition-all text-center flex items-center justify-center gap-2">
+            <a href="#projects" className="px-6 py-3.5 rounded-xl text-white font-semibold btn-shimmer shadow-lg shadow-blue-600/25 hover:scale-[1.03] transition-all text-center flex items-center justify-center gap-2">
               {translations[lang].heroViewWork} <FaChevronRight className="text-xs" />
             </a>
             <a href="#certificates" className={`px-6 py-3.5 rounded-xl border transition-all hover:scale-[1.02] text-center flex items-center justify-center gap-2 ${darkMode ? "border-zinc-800 text-zinc-300 hover:bg-zinc-900 hover:border-zinc-700" : "border-zinc-300 text-zinc-700 hover:bg-zinc-100 shadow-sm hover:border-zinc-400"}`}>
@@ -1120,7 +1134,7 @@ export default function App() {
                 : "bg-zinc-50 border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:border-blue-500"
             }`}
           />
-          <button onClick={sendMessage} className="mt-2 text-white font-semibold bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl text-xs transition-all shadow-md shadow-blue-600/20 hover:scale-[1.02]">
+          <button onClick={sendMessage} className="mt-2 text-white font-bold btn-shimmer px-6 py-3 rounded-xl text-xs transition-all shadow-md shadow-blue-600/25 hover:scale-[1.02]">
             {translations[lang].guestbookSendBtn}
           </button>
           
@@ -1134,6 +1148,17 @@ export default function App() {
 
       {/* Interactive Dog Mascot Assistant */}
       <div className="fixed bottom-6 right-20 z-40 flex flex-col items-end">
+        {/* Floating Sparkles Effects */}
+        {sparkles.map((sp) => (
+          <div 
+            key={sp.id} 
+            className="absolute text-blue-400 text-sm font-bold pointer-events-none animate-ping select-none z-50"
+            style={{ transform: `translate(${sp.x}px, ${sp.y}px)` }}
+          >
+            ✨
+          </div>
+        ))}
+
         {/* Speech Bubble */}
         {dogBubbleOpen && (
           <div className={`mb-3 max-w-[260px] p-4 rounded-2xl border shadow-xl backdrop-blur-md relative ${
@@ -1158,7 +1183,7 @@ export default function App() {
               className={`mt-2 text-[10px] text-right italic cursor-pointer transition ${darkMode ? "text-zinc-500 hover:text-blue-400" : "text-zinc-400 hover:text-blue-600"}`} 
               onClick={handleDogClick}
             >
-              Click me for next tip
+              Click me for next tip ✨
             </div>
             {/* Bubble Arrow */}
             <div className={`absolute -bottom-2 right-6 w-3 h-3 border-r border-b rotate-45 ${
@@ -1171,7 +1196,7 @@ export default function App() {
         <button
           onClick={handleDogClick}
           className={`relative w-13 h-13 rounded-full p-0.5 border-2 shadow-xl animate-float-mascot hover:scale-105 transition-all duration-300 group ${
-            darkMode ? "border-zinc-700 bg-zinc-900 hover:border-blue-400" : "border-zinc-300 bg-white hover:border-blue-500"
+            darkMode ? "border-zinc-700 bg-zinc-900 hover:border-blue-400 hover:shadow-blue-500/20" : "border-zinc-300 bg-white hover:border-blue-500 hover:shadow-blue-500/20"
           }`}
           title="Click to talk to Buddy the AI Dog Mascot!"
         >
