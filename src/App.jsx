@@ -80,7 +80,7 @@ const projects = {
     {
       title: "Fourier Series Calculator & Plotter",
       desc: "A Python desktop application built with Tkinter, NumPy, SciPy, and Matplotlib. It computes Fourier coefficients using numerical integration and dynamically visualizes the convergence of trigonometric series against original periodic functions, supporting both single and piecewise functions.",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("Fourier.png"),
       tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "Math Modeling"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("fourier_report.pdf") },
@@ -90,7 +90,7 @@ const projects = {
     {
       title: "Electrical Circuit Simulation and Analysis",
       desc: "This study analyzes and simulates the electrical behavior of three basic circuit types: RC circuit, Transistor switching circuits, and diode-capacitor circuits.",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("circuit.png"),
       tags: ["Transistor", "Diode", "Circuit Analysis", "Capacitor", "RC"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("circuit_report.pdf") }
@@ -99,7 +99,7 @@ const projects = {
     {
       title: "Kijhub Application",
       desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("Kijhub.png"),
       tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") }
@@ -108,7 +108,7 @@ const projects = {
     {
       title: "Transient Response Circuit Analyzer",
       desc: "Developed a computational script using numerical methods to analyze and simulate Transient Responses in complex RL, RC, and RLC networks utilizing Kirchhoff's laws, Nodal/Mesh analysis, and matrix operations.",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("circuit.png"),
       tags: ["Python", "Circuit Analysis", "Engineering Math"]
     }
   ],
@@ -116,7 +116,7 @@ const projects = {
     {
       title: "เครื่องคำนวณและวาดกราฟอนุกรมฟูเรียร์",
       desc: "แอปพลิเคชันเดสก์ท็อป Python ที่พัฒนาขึ้นด้วย Tkinter, NumPy, SciPy และ Matplotlib คำนวณสัมประสิทธิ์อนุกรมฟูเรียร์ด้วยการหาปริพันธ์เชิงตัวเลขและแสดงภาพความสอดคล้องและการลู่เข้าของอนุกรมตรีโกณมิติเปรียบเทียบกับฟังก์ชันคาบดั้งเดิม รองรับทั้งฟังก์ชันเดี่ยวและฟังก์ชันเป็นช่วง",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("Fourier.png"),
       tags: ["Python", "Tkinter", "SciPy", "Matplotlib", "การจำลองทางคณิตศาสตร์"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("fourier_report.pdf") },
@@ -126,7 +126,7 @@ const projects = {
     {
       title: "การจำลองและวิเคราะห์วงจรไฟฟ้า",
       desc: "การศึกษาวิเคราะห์และจำลองพฤติกรรมทางไฟฟ้าของวงจรพื้นฐาน 3 ประเภท: วงจร RC, วงจรสวิตชิ่งทรานซิสเตอร์ และวงจรไดโอด-คาปาซิเตอร์",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("circuit.png"),
       tags: ["ทรานซิสเตอร์", "ไดโอด", "การวิเคราะห์วงจร", "ตัวเก็บประจุ", "RC"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("circuit_report.pdf") }
@@ -135,7 +135,7 @@ const projects = {
     {
       title: "แอปพลิเคชัน Kijhub",
       desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("Kijhub.png"),
       tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") }
@@ -144,7 +144,7 @@ const projects = {
     {
       title: "เครื่องวิเคราะห์วงจรตอบสนองชั่วครู่",
       desc: "พัฒนาสคริปต์คำนวณโดยใช้วิธีเชิงตัวเลขเพื่อวิเคราะห์และจำลองการตอบสนองชั่วครู่ (Transient Responses) ในวงจรเครือข่าย RL, RC และ RLC ที่มีความซับซ้อนตามกฎของ Kirchhoff การวิเคราะห์โหนด/เมช และการคำนวณเมทริกซ์",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80",
+      image: baseAsset("circuit.png"),
       tags: ["Python", "การวิเคราะห์วงจร", "คณิตศาสตร์วิศวกรรม"]
     }
   ]
