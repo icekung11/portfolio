@@ -4,7 +4,7 @@ import {
   FaJava, FaPython, FaLinux, FaNetworkWired, FaReact, 
   FaGithub, FaInstagram, FaPhoneAlt, FaFolderPlus,
   FaAward, FaGraduationCap, FaArrowUp, FaTimes, FaExpand,
-  FaCheckCircle, FaHeart, FaChevronRight, FaTerminal, FaCode
+  FaCheckCircle, FaChevronRight, FaTerminal
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiJavascript, SiMaildotru 
