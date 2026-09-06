@@ -104,13 +104,15 @@ const projects = {
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") }
       ]
-    },
+    }
+    /* Stored for future release:
     {
       title: "Transient Response Circuit Analyzer",
       desc: "Developed a computational script using numerical methods to analyze and simulate Transient Responses in complex RL, RC, and RLC networks utilizing Kirchhoff's laws, Nodal/Mesh analysis, and matrix operations.",
       image: baseAsset("circuit.png"),
       tags: ["Python", "Circuit Analysis", "Engineering Math"]
     }
+    */
   ],
   th: [
     {
@@ -140,13 +142,15 @@ const projects = {
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") }
       ]
-    },
+    }
+    /* Stored for future release:
     {
       title: "เครื่องวิเคราะห์วงจรตอบสนองชั่วครู่",
       desc: "พัฒนาสคริปต์คำนวณโดยใช้วิธีเชิงตัวเลขเพื่อวิเคราะห์และจำลองการตอบสนองชั่วครู่ (Transient Responses) ในวงจรเครือข่าย RL, RC และ RLC ที่มีความซับซ้อนตามกฎของ Kirchhoff การวิเคราะห์โหนด/เมช และการคำนวณเมทริกซ์",
       image: baseAsset("circuit.png"),
       tags: ["Python", "การวิเคราะห์วงจร", "คณิตศาสตร์วิศวกรรม"]
     }
+    */
   ]
 };
 
@@ -178,7 +182,8 @@ const certificates = {
       image: baseAsset("cert_ws.jpg"),
       desc: "Course completion in Generative AI foundation program, including KIRO Challenge and practical applications.",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
-    },
+    }
+    /* Stored for future release:
     {
       id: "cert-circuits",
       title: "Digital Logic Design & Transient Analysis",
@@ -206,6 +211,7 @@ const certificates = {
       desc: "Course completion in Linux Administration basics, Shell Scripting, Network Concepts, and System Infrastructure fundamentals.",
       tags: ["Linux", "Networking", "Systems Basics"]
     }
+    */
   ],
   th: [
     {
@@ -234,7 +240,8 @@ const certificates = {
       image: baseAsset("cert_ws.jpg"),
       desc: "ใบรับรองการผ่านการเรียนรู้ Generative AI Foundation Program รวมถึง KIRO Challenge และการประยุกต์ใช้งานจริง",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
-    },
+    }
+    /* Stored for future release:
     {
       id: "cert-circuits",
       title: "การออกแบบตรรกศาสตร์ดิจิทัล & วิเคราะห์วงจร",
@@ -262,6 +269,7 @@ const certificates = {
       desc: "ใบรับรองการผ่านหลักสูตรเรียนรู้ระบบปฏิบัติการ Linux, Shell Scripting และพื้นฐานระบบเครือข่าย",
       tags: ["Linux", "ระบบเครือข่าย", "วิศวกรรมระบบ"]
     }
+    */
   ]
 };
 
