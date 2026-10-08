@@ -284,7 +284,7 @@ const translations = {
     heroSub: "Computer Engineering Student",
     heroTitle: "Hi, I am",
     heroName: "Kittithat Dokboua",
-    heroDesc: "I am a Computer Engineering student with a strong interest in technology and system development. I have foundational knowledge in hardware, networking, backend development, and web applications. I enjoy learning and exploring new technologies, as well as understanding how systems work from infrastructure to application development. I am eager to develop my skills and gain practical experience through hands-on projects and real-world applications.",
+    heroDesc: "I am a Computer Engineering student with a strong interest in technology and system development. I have foundational knowledge in hardware, networking, backend development, and web applications.\n\nI enjoy learning and exploring new technologies, as well as understanding how systems work from infrastructure to application development. I am eager to develop my skills and gain practical experience through hands-on projects and real-world applications.",
     heroViewWork: "View My Work",
     heroTalk: "Let's Talk",
     profileName: "Kittithat Dokboua (ICE)",
@@ -292,7 +292,7 @@ const translations = {
     profileSub: "Computer Engineering Student",
     aboutTitle: "About Me",
     aboutIntroTitle: "Introduction",
-    aboutIntroDesc: "I am a Computer Engineering student with a strong interest in technology and system development. I have foundational knowledge in hardware, networking, backend development, and web applications. I enjoy learning and exploring new technologies, as well as understanding how systems work from infrastructure to application development. I am eager to develop my skills and gain practical experience through hands-on projects and real-world applications.",
+    aboutIntroDesc: "I am a Computer Engineering student with a strong interest in technology and system development. I have foundational knowledge in hardware, networking, backend development, and web applications.\n\nI enjoy learning and exploring new technologies, as well as understanding how systems work from infrastructure to application development. I am eager to develop my skills and gain practical experience through hands-on projects and real-world applications.",
     aboutEduTitle: "Education",
     aboutEduDegree: "Computer Engineering",
     aboutEduUni: "Srinakharinwirot University",
@@ -352,7 +352,7 @@ const translations = {
     heroSub: "นักศึกษาวิศวกรรมคอมพิวเตอร์",
     heroTitle: "สวัสดีครับ ผมชื่อ",
     heroName: "กิตติธัช ดอกบัว",
-    heroDesc: "ผมเป็นนิสิตวิศวกรรมคอมพิวเตอร์ที่มีความสนใจด้านเทคโนโลยีและการพัฒนาระบบ มีพื้นฐานด้านฮาร์ดแวร์ ระบบเครือข่าย การพัฒนา Backend และ Web Application ผมชอบเรียนรู้และทดลองใช้เทคโนโลยีใหม่ ๆ รวมถึงทำความเข้าใจการทำงานของระบบตั้งแต่โครงสร้างพื้นฐานไปจนถึงการพัฒนาแอปพลิเคชัน และมุ่งมั่นที่จะพัฒนาทักษะและเพิ่มพูนประสบการณ์ผ่านการทำโปรเจกต์และการประยุกต์ใช้จริง",
+    heroDesc: "ผมเป็นนิสิตวิศวกรรมคอมพิวเตอร์ที่มีความสนใจด้านเทคโนโลยีและการพัฒนาระบบ มีพื้นฐานด้านฮาร์ดแวร์ ระบบเครือข่าย การพัฒนา Backend และ Web Application\n\nผมชอบเรียนรู้และทดลองใช้เทคโนโลยีใหม่ ๆ รวมถึงทำความเข้าใจการทำงานของระบบตั้งแต่โครงสร้างพื้นฐานไปจนถึงการพัฒนาแอปพลิเคชัน และมุ่งมั่นที่จะพัฒนาทักษะและเพิ่มพูนประสบการณ์ผ่านการทำโปรเจกต์และการประยุกต์ใช้จริง",
     heroViewWork: "ดูผลงานของผม",
     heroTalk: "พูดคุยกัน",
     profileName: "กิตติธัช ดอกบัว (ไอซ์)",
@@ -360,7 +360,7 @@ const translations = {
     profileSub: "นักศึกษาวิศวกรรมคอมพิวเตอร์",
     aboutTitle: "เกี่ยวกับฉัน",
     aboutIntroTitle: "แนะนำตัว",
-    aboutIntroDesc: "ผมเป็นนิสิตวิศวกรรมคอมพิวเตอร์ที่มีความสนใจด้านเทคโนโลยีและการพัฒนาระบบ มีพื้นฐานด้านฮาร์ดแวร์ ระบบเครือข่าย การพัฒนา Backend และ Web Application ผมชอบเรียนรู้และทดลองใช้เทคโนโลยีใหม่ ๆ รวมถึงทำความเข้าใจการทำงานของระบบตั้งแต่โครงสร้างพื้นฐานไปจนถึงการพัฒนาแอปพลิเคชัน และมุ่งมั่นที่จะพัฒนาทักษะและเพิ่มพูนประสบการณ์ผ่านการทำโปรเจกต์และการประยุกต์ใช้จริง",
+    aboutIntroDesc: "ผมเป็นนิสิตวิศวกรรมคอมพิวเตอร์ที่มีความสนใจด้านเทคโนโลยีและการพัฒนาระบบ มีพื้นฐานด้านฮาร์ดแวร์ ระบบเครือข่าย การพัฒนา Backend และ Web Application\n\nผมชอบเรียนรู้และทดลองใช้เทคโนโลยีใหม่ ๆ รวมถึงทำความเข้าใจการทำงานของระบบตั้งแต่โครงสร้างพื้นฐานไปจนถึงการพัฒนาแอปพลิเคชัน และมุ่งมั่นที่จะพัฒนาทักษะและเพิ่มพูนประสบการณ์ผ่านการทำโปรเจกต์และการประยุกต์ใช้จริง",
     aboutEduTitle: "ประวัติการศึกษา",
     aboutEduDegree: "วิศวกรรมคอมพิวเตอร์",
     aboutEduUni: "มหาวิทยาลัยศรีนครินทรวิโรฒ",
@@ -687,7 +687,7 @@ export default function App() {
               {translations[lang].heroName}
             </span>
           </h1>
-          <p className={`mt-5 text-base leading-relaxed max-w-xl mx-auto md:mx-0 ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+          <p className={`mt-5 text-base leading-relaxed max-w-xl mx-auto md:mx-0 whitespace-pre-line ${darkMode ? "text-zinc-400" : "text-zinc-600"}`}>
            {translations[lang].heroDesc}
           </p>
 
@@ -756,7 +756,7 @@ export default function App() {
             <h3 className={`text-base font-bold mb-3 flex items-center gap-2 ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
               <span className={`w-2 h-2 rounded-full ${darkMode ? "bg-blue-400" : "bg-blue-600"}`}></span> {translations[lang].aboutIntroTitle}
             </h3>
-            <p className={`leading-relaxed text-sm ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
+            <p className={`leading-relaxed text-sm whitespace-pre-line ${darkMode ? "text-zinc-300" : "text-zinc-600"}`}>
              {translations[lang].aboutIntroDesc}
             </p>
           </div>
