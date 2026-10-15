@@ -216,7 +216,7 @@ const certificates = {
   th: [
     {
       id: "cert-Foundation AI (theory)",
-      title: "รากฐานปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง (ทฤษฎี)",
+      title: "พื้นฐานปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง (ทฤษฎี)",
       issuer: "สมาคมปัญญาประดิษฐ์แห่งประเทศไทย",
       date: "2025",
       image: baseAsset("Ai_theory.png"),
@@ -284,7 +284,7 @@ const translations = {
     heroSub: "Computer Engineering Student",
     heroTitle: "Hi, I am",
     heroName: "Kittithat Dokboua",
-    heroDesc: "I am a Computer Engineering student with a strong interest in technology and system development. I have foundational knowledge in hardware, networking, backend development, and web applications. I enjoy learning and exploring new technologies, as well as understanding how systems work from infrastructure to application development. I am eager to develop my skills and gain practical experience through hands-on projects and real-world applications.",
+    heroDesc: "This website was developed to showcase my personal profile, skills, abilities, projects, and experience in technology. It is designed to present information in a clear and organized way, making it easy for visitors to explore my background, learn about my interests, and get to know me better through my skills and work.",
     heroViewWork: "View My Work",
     heroTalk: "Let's Talk",
     profileName: "Kittithat Dokboua (ICE)",
@@ -336,7 +336,7 @@ const translations = {
     dogTips: [
       "Woof! 🐶 Welcome to Kittithat (ICE)'s portfolio! Click me anytime for helpful tips!",
       "ICE is a Computer Engineering student at SWU who loves learning both Hardware & Software! 💻⚙️",
-      "Scroll down to explore Fourier Calculator & E-Waste Management projects! 🚀",
+      "Scroll down to explore Fourier Calculator & Many Projects! 🚀",
       "Check out ICE's Certificates in Linux, Python, React & Circuit Logic! 📜",
       "Feel free to leave a friendly note in the Guestbook below! ✍️"
     ],
@@ -349,15 +349,15 @@ const translations = {
     navCerts: "ใบประกาศนียบัตร",
     navContact: "ติดต่อ",
     navComments: "สมุดเยี่ยมชม",
-    heroSub: "นักศึกษาวิศวกรรมคอมพิวเตอร์",
+    heroSub: "นิสิตวิศวกรรมคอมพิวเตอร์",
     heroTitle: "สวัสดีครับ ผมชื่อ",
     heroName: "กิตติธัช ดอกบัว",
-    heroDesc: "ผมเป็นนิสิตวิศวกรรมคอมพิวเตอร์ที่มีความสนใจด้านเทคโนโลยีและการพัฒนาระบบ มีพื้นฐานด้านฮาร์ดแวร์ ระบบเครือข่าย การพัฒนา Backend และ Web Application ผมชอบเรียนรู้และทดลองใช้เทคโนโลยีใหม่ ๆ รวมถึงทำความเข้าใจการทำงานของระบบตั้งแต่โครงสร้างพื้นฐานไปจนถึงการพัฒนาแอปพลิเคชัน และมุ่งมั่นที่จะพัฒนาทักษะและเพิ่มพูนประสบการณ์ผ่านการทำโปรเจกต์และการประยุกต์ใช้จริง",
+    heroDesc: "เว็บไซต์นี้ถูกพัฒนาขึ้นเพื่อเป็นพื้นที่รวบรวมและนำเสนอประวัติส่วนตัว ทักษะ ความสามารถ โปรเจกต์ และประสบการณ์ด้านเทคโนโลยีของผม โดยออกแบบให้ข้อมูลมีความเป็นระเบียบและเข้าถึงได้ง่าย เพื่อให้ผู้เข้าชมได้ทำความรู้จักกับตัวผมมากขึ้น ทั้งในด้านความสนใจ ความสามารถ และผลงานที่ผ่านมา",
     heroViewWork: "ดูผลงานของผม",
     heroTalk: "พูดคุยกัน",
     profileName: "กิตติธัช ดอกบัว (ไอซ์)",
     profileUni: "มหาวิทยาลัยศรีนครินทรวิโรฒ (มศว)",
-    profileSub: "นักศึกษาวิศวกรรมคอมพิวเตอร์",
+    profileSub: "นิสิตวิศวกรรมคอมพิวเตอร์",
     aboutTitle: "เกี่ยวกับฉัน",
     aboutIntroTitle: "แนะนำตัว",
     aboutIntroDesc: "สวัสดีครับ ผมกิตติธัช ผมชอบเปลี่ยนไอเดียให้กลายเป็นโซลูชันที่สามารถนำไปใช้ได้จริง และมองหาวิธีนำเทคโนโลยีมาใช้ให้เกิดประโยชน์ในชีวิตประจำวัน ผมเป็นคนที่ชอบตั้งคำถามและทำความเข้าใจว่าสิ่งต่าง ๆ ทำงานอย่างไร รวมถึงชอบแยกปัญหาที่ซับซ้อนออกเป็นส่วนเล็ก ๆ เพื่อหาแนวทางที่เรียบง่ายและมีประสิทธิภาพ ผมให้ความสำคัญกับการพัฒนาตัวเองและชอบท้าทายตัวเองด้วยแนวคิดและมุมมองใหม่ ๆ",
@@ -375,7 +375,7 @@ const translations = {
     ],
     skillsTitle: "ทักษะทางเทคนิค",
     skillsCategories: {
-      "Core & Systems Engineering": "วิศวกรรมระบบและแกนหลัก",
+      "Core & Systems Engineering": "วิศวกรรมระบบและโครงสร้างพื้นฐาน",
       "Software & Web Development": "การพัฒนาซอฟต์แวร์และเว็บ"
     },
     projectsTitle: "โครงการทางวิศวกรรม",
@@ -404,7 +404,7 @@ const translations = {
     dogTips: [
       "โฮ่ง! 🐶 ยินดีต้อนรับสู่พอร์ตโฟลิโอของพี่ไอซ์ครับ! คลิกที่ตัวผมเพื่อฟังคำแนะนำได้เลยนะ!",
       "พี่ไอซ์เป็นนักศึกษาวิศวกรรมคอมพิวเตอร์ มศว ที่กำลังศึกษาและเรียนรู้ทั้ง Hardware และ Software ครับ! 💻⚙️",
-      "เลื่อนลงไปชมโครงการคำนวณอนุกรมฟูเรียร์และแอปจัดการขยะอิเล็กทรอนิกส์ได้เลยนะ โฮ่ง! 🚀",
+      "เลื่อนลงไปชมโครงการคำนวณอนุกรมฟูเรียร์และโครงการอื่นๆ ได้เลยนะ โฮ่ง! 🚀",
       "กดดูใบประกาศนียบัตร (Certificates) ของพี่ไอซ์ด้านล่างได้เลยครับ! 📜",
       "อย่าลืมแวะเขียนข้อความทักทายในสมุดเยี่ยมชม (Guestbook) ให้พี่ไอซ์ด้วยน้า! ✍️"
     ],
@@ -705,7 +705,7 @@ export default function App() {
               <span className="text-blue-400">const</span> <span className="text-zinc-200">engineer</span> = &#123;<br />
               &nbsp;&nbsp;<span className="text-zinc-500">name:</span> <span className="text-emerald-400">"Kittithat Dokboua (ICE)"</span>,<br />
               &nbsp;&nbsp;<span className="text-zinc-500">degree:</span> <span className="text-emerald-400">"Computer Engineering @ SWU"</span>,<br />
-              &nbsp;&nbsp;<span className="text-zinc-500">passions:</span> [<span className="text-blue-400">"System Eng"</span>, <span className="text-blue-400">"Web Apps"</span>, <span className="text-blue-400">"Digital Logic"</span>],<br />
+              &nbsp;&nbsp;<span className="text-zinc-500">passions:</span> [<span className="text-blue-400">"System Eng"</span>, <span className="text-blue-400">"Web Apps"</span>, <span className="text-blue-400">"Electronics"</span>,<span className="text-blue-400">"Cybersecurity"</span>],<br />
               &nbsp;&nbsp;<span className="text-zinc-500">status:</span> <span className="text-zinc-300">"Always Eager to Learn"</span><br />
               &#125;;
             </div>
