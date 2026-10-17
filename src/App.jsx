@@ -208,7 +208,7 @@ const projects = {
       image: baseAsset("retail.png"),
       tags: ["Next.js", "TypeScript", "Web App"],
       links: [
-        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Retail_report.pdf") },
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("retail_report.pdf") },
         { label: "💻 เว็บไซต์", url: "https://retail-trackerr.netlify.app/" }
       ]
     },
