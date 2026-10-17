@@ -111,7 +111,8 @@ const projects = {
       image: baseAsset("typing.png"),
       tags: ["React", "JavaScript", "Tailwind CSS"],
       links: [
-        { label: "📄 Full Report (PDF)", url: baseAsset("typing_report.pdf") }
+        { label: "📄 Full Report (PDF)", url: baseAsset("typing_report.pdf") },
+        { label: "💻 Website", url: "https://typing-app-gg.netlify.app/" }
       ]
     },
      {
@@ -120,7 +121,8 @@ const projects = {
       image: baseAsset("RiceCare_AI.png"),
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
-        { label: "📄 Full Report (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") }
+        { label: "📄 Full Report (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") },
+        { label: "💻 Website", url: "https://ricecare-ai.netlify.app/" }
       ]
     },
      {
@@ -129,7 +131,8 @@ const projects = {
       image: baseAsset("retail.png"),
       tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       links: [
-        { label: "📄 Full Report (PDF)", url: baseAsset("retail_report.pdf") }
+        { label: "📄 Full Report (PDF)", url: baseAsset("retail_report.pdf") },
+        { label: "💻 Website", url: "https://retail-trackerr.netlify.app/" }
       ]
     },
     {
@@ -185,7 +188,8 @@ const projects = {
       image: baseAsset("typing.png"),
       tags: ["React", "JavaScript", "Web App"],
       links: [
-        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Typing_report.pdf") }
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Typing_report.pdf") },
+        { label: "💻 เว็บไซต์", url: "https://typing-app-gg.netlify.app/" }
       ]
     },
     {
@@ -194,7 +198,8 @@ const projects = {
       image: baseAsset("RiceCare_AI.png"),
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
-        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") }
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") },
+        { label: "💻 เว็บไซต์", url: "https://ricecare-ai.netlify.app/" }
       ]
     },
        {
@@ -203,7 +208,8 @@ const projects = {
       image: baseAsset("retail.png"),
       tags: ["Next.js", "TypeScript", "Web App"],
       links: [
-        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Retail_report.pdf") }
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Retail_report.pdf") },
+        { label: "💻 เว็บไซต์", url: "https://retail-trackerr.netlify.app/" }
       ]
     },
        {
