@@ -107,7 +107,7 @@ const projects = {
     },
      {
       title: "Typing Application",
-      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      desc: "A typing practice website developed using React and JavaScript, featuring an interactive typing interface and real-time typing performance tracking.",
       image: baseAsset("typing.png"),
       tags: ["React", "JavaScript", "Tailwind CSS"],
       links: [
@@ -115,8 +115,8 @@ const projects = {
       ]
     },
      {
-      title: "RiceCare_AI",
-      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      title: "RiceCare AI",
+      desc: "A web application for rice leaf disease detection using AI and image processing, enabling users to upload images and receive disease predictions through a trained deep learning model.",
       image: baseAsset("RiceCare_AI.png"),
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
@@ -125,7 +125,7 @@ const projects = {
     },
      {
       title: "Retail Application",
-      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      desc: "A retail returns and exchange management web application developed using Next.js and TypeScript, featuring inventory tracking, automated refund and price difference calculations, return analytics, and CSV data export.",
       image: baseAsset("retail.png"),
       tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       links: [
@@ -134,7 +134,7 @@ const projects = {
     },
     {
       title: "AI Smart CCTV ",
-      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      desc: "An AI-powered smart CCTV web application developed using HTML, CSS, and JavaScript, integrated with Python, OpenCV, and YOLOv8 for real-time object detection, intrusion detection, overcrowding monitoring, and abandoned object detection. Features a live monitoring dashboard, camera management, and historical detection logs.",
       image: baseAsset("AISmartCCTV.png"),
       tags: ["YOLO", "HTML", "JavaScript", "CSS", "Python", "Docker", "nginx"],
       links: [
@@ -180,28 +180,37 @@ const projects = {
       ]
     },
     {
+      title: "แอปพลิเคชัน Typing",
+      desc: "เว็บไซต์ฝึกพิมพ์ที่พัฒนาด้วย React และ JavaScript มีอินเทอร์เฟซการพิมพ์แบบโต้ตอบและติดตามประสิทธิภาพการพิมพ์แบบเรียลไทม์",
+      image: baseAsset("typing.png"),
+      tags: ["React", "JavaScript", "Web App"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Typing_report.pdf") }
+      ]
+    },
+    {
       title: "แอปพลิเคชัน ตรวจโรคข้าวด้วย AI (RiceCare_AI)",
-      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      desc: "แอปพลิเคชันเว็บสำหรับตรวจโรคใบข้าวด้วย AI และการประมวลผลภาพ ช่วยให้ผู้ใช้สามารถอัปโหลดรูปภาพและรับการทำนายโรคจากโมเดลการเรียนรู้เชิงลึกที่ผ่านการฝึกฝนมาแล้ว",
       image: baseAsset("RiceCare_AI.png"),
-      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") }
       ]
     },
        {
       title: "แอปพลิเคชัน Retail ",
-      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      desc: "แอปพลิเคชันเว็บสำหรับจัดการการคืนสินค้าและแลกเปลี่ยนสินค้าของร้านค้าปลีกที่พัฒนาด้วย Next.js และ TypeScript มีฟีเจอร์ติดตามสินค้าคงคลัง การคำนวณเงินคืนและส่วนต่างราคาอัตโนมัติ การวิเคราะห์การคืนสินค้า และการส่งออกข้อมูลเป็นไฟล์ CSV",
       image: baseAsset("retail.png"),
-      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      tags: ["Next.js", "TypeScript", "Web App"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Retail_report.pdf") }
       ]
     },
        {
       title: "AI Smart CCTV",
-      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      desc: "แอปพลิเคชันเว็บกล้องวงจรปิดอัจฉริยะที่ใช้ AI พัฒนาด้วย HTML, CSS และ JavaScript ผสานการทำงานกับ Python, OpenCV และ YOLOv8 สำหรับการตรวจจับวัตถุแบบเรียลไทม์ การตรวจจับการบุกรุก การตรวจสอบความแออัด และการตรวจจับวัตถุที่ถูกทิ้ง มีแดชบอร์ดสำหรับการตรวจสอบแบบสด การจัดการกล้อง และบันทึกประวัติการตรวจจับ",
       image: baseAsset("AISmartCCTV.png"),
-      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      tags: ["HTML", "CSS", "JavaScript", "Python", "OpenCV", "YOLOv8"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("AI Smart CCTV_report.pdf") }
       ]
@@ -246,7 +255,35 @@ const certificates = {
       image: baseAsset("cert_ws.jpg"),
       desc: "Course completion in Generative AI foundation program, including KIRO Challenge and practical applications.",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
+    },
+     {
+      id: "cert-python",
+      title: "Python programming assessment",
+      issuer: "HackerRank",
+      date: "2025",
+      image: baseAsset("python.png"),
+      desc: "Earned a Python programming certificate through a basic-level assessment.",
+      tags: ["Python", "Programming"]
+    },
+     {
+      id: "cert-go",
+      title: "Go programming assessment",
+      issuer: "HackerRank",
+      date: "2025",
+      image: baseAsset("go.png"),
+      desc: "Earned a Go programming certificate through a basic-level assessment.",
+      tags: ["Go", "Programming"]
+    },
+     {
+      id: "cert-Ctf",
+      title: "the NCSA × Cisco CTF Thailand Tournament 2026",
+      issuer: "NCSA, Cisco",
+      date: "2026",
+      image: baseAsset("ctf.png"),
+      desc: "Participated in the NCSA × Cisco CTF Thailand Tournament 2026, organized by the National Cyber Security Agency of Thailand and Cisco.",
+      tags: ["Cybersecurity", "CTF", "Competitions"]
     }
+
     /* Stored for future release:
     {
       id: "cert-circuits",
@@ -304,6 +341,33 @@ const certificates = {
       image: baseAsset("cert_ws.jpg"),
       desc: "ใบรับรองการผ่านการเรียนรู้ Generative AI Foundation Program รวมถึง KIRO Challenge และการประยุกต์ใช้งานจริง",
       tags: ["Generative AI", "KIRO", "Pitching", "AI Applications"]
+    },
+      {
+      id: "cert-python",
+      title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Python",
+      issuer: "HackerRank",
+      date: "2025",
+      image: baseAsset("cert_python.jpg"),
+      desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Python ในระดับพื้นฐาน",
+      tags: ["Python", "Programming"]
+    },
+      {
+      id: "cert-go",
+      title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go",
+      issuer: "HackerRank",
+      date: "2025",
+      image: baseAsset("cert_go.jpg"),
+      desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go ในระดับพื้นฐาน",
+      tags: ["Go", "Programming"]
+    },
+      {
+      id: "cert-Ctf",
+      title: "the NCSA × Cisco CTF Thailand Tournament 2025",
+      issuer: "National Cyber Security Agency of Thailand, Cisco",
+      date: "2025",
+      image: baseAsset("cert_ctf.jpg"),
+      desc: "ใบรับรองการผ่านการแข่งขัน CTF ระหว่างประเทศ 2025",
+      tags: ["Cybersecurity", "CTF", "Competitions"]
     }
     /* Stored for future release:
     {
@@ -467,7 +531,7 @@ const translations = {
     dogDogName: "บัดดี้ 🐶 (โฮ่งน้อยผู้ช่วย)",
     dogTips: [
       "โฮ่ง! 🐶 ยินดีต้อนรับสู่พอร์ตโฟลิโอของพี่ไอซ์ครับ! คลิกที่ตัวผมเพื่อฟังคำแนะนำได้เลยนะ!",
-      "พี่ไอซ์เป็นนักศึกษาวิศวกรรมคอมพิวเตอร์ มศว ที่กำลังศึกษาและเรียนรู้ทั้ง Hardware และ Software ครับ! 💻⚙️",
+      "พี่ไอซ์เป็นนิสิตวิศวกรรมคอมพิวเตอร์ มศว ที่กำลังศึกษาและเรียนรู้ทั้ง Hardware และ Software ครับ! 💻⚙️",
       "เลื่อนลงไปชมโครงการคำนวณอนุกรมฟูเรียร์และโครงการอื่นๆ ได้เลยนะ โฮ่ง! 🚀",
       "กดดูใบประกาศนียบัตร (Certificates) ของพี่ไอซ์ด้านล่างได้เลยครับ! 📜",
       "อย่าลืมแวะเขียนข้อความทักทายในสมุดเยี่ยมชม (Guestbook) ให้พี่ไอซ์ด้วยน้า! ✍️"
@@ -1023,7 +1087,7 @@ export default function App() {
 
               <div className="p-4 pt-0 flex items-center justify-between gap-2">
                 <div className="flex flex-wrap gap-1">
-                  {cert.tags.slice(0, 3).map((t, idx) => (
+                  {cert.tags.map((t, idx) => (
                     <span key={idx} className={`text-[9px] px-2.5 py-1 rounded-lg font-medium border ${darkMode ? "bg-zinc-800/80 text-zinc-300 border-zinc-700/50" : "bg-zinc-100 text-zinc-700 border-zinc-200"}`}>
                       {t}
                     </span>
