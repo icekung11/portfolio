@@ -199,7 +199,7 @@ const projects = {
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") },
-        { label: "💻 เว็บไซต์", url: "https://ricecare-ai.netlify.app/" }
+        { label: "💻 เว็บไซต์", url: "https://agent-6ad3845ceb92b5b16fbc1df9--ricecare-ai.netlify.app/" }
       ]
     },
        {
