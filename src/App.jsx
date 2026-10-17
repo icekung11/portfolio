@@ -104,6 +104,42 @@ const projects = {
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") }
       ]
+    },
+     {
+      title: "Typing Application",
+      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      image: baseAsset("typing.png"),
+      tags: ["React", "JavaScript", "Tailwind CSS"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: baseAsset("typing_report.pdf") }
+      ]
+    },
+     {
+      title: "RiceCare_AI",
+      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      image: baseAsset("RiceCare_AI.png"),
+      tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") }
+      ]
+    },
+     {
+      title: "Retail Application",
+      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      image: baseAsset("retail.png"),
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: baseAsset("retail_report.pdf") }
+      ]
+    },
+    {
+      title: "AI Smart CCTV ",
+      desc: "A mobile application developed using Flutter and Dart, integrated with Kafka for real-time data streaming and Go for backend services.",
+      image: baseAsset("AISmartCCTV.png"),
+      tags: ["YOLO", "HTML", "JavaScript", "CSS", "Python", "Docker", "nginx"],
+      links: [
+        { label: "📄 Full Report (PDF)", url: baseAsset("AI Smart CCTV_report.pdf") }
+      ]
     }
     /* Stored for future release:
     {
@@ -142,7 +178,35 @@ const projects = {
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") }
       ]
+    },
+    {
+      title: "แอปพลิเคชัน ตรวจโรคข้าวด้วย AI (RiceCare_AI)",
+      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      image: baseAsset("RiceCare_AI.png"),
+      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") }
+      ]
+    },
+       {
+      title: "แอปพลิเคชัน Retail ",
+      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      image: baseAsset("retail.png"),
+      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Retail_report.pdf") }
+      ]
+    },
+       {
+      title: "AI Smart CCTV",
+      desc: "แอปพลิเคชันมือถือที่พัฒนาด้วย Flutter และ Dart ผสานการทำงานกับ Kafka สำหรับการสตรีมข้อมูลแบบเรียลไทม์และ Go สำหรับบริการแบ็กเอนด์",
+      image: baseAsset("AISmartCCTV.png"),
+      tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
+      links: [
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("AI Smart CCTV_report.pdf") }
+      ]
     }
+      
     /* Stored for future release:
     {
       title: "เครื่องวิเคราะห์วงจรตอบสนองชั่วครู่",
@@ -453,7 +517,7 @@ export default function App() {
   const selectedProject = selectedProjectIndex !== null ? projects[lang][selectedProjectIndex] : null;
   const selectedCert = selectedCertIndex !== null ? certificates[lang][selectedCertIndex] : null;
 
-  // Track Mouse Movement for Cursor Glow
+  // Track Mouse Movement for Cursor Glow***********************
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
