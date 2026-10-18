@@ -116,7 +116,7 @@ const projects = {
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") },
-        { label: "💻 Website", url: "https://agent-6ad3845ceb92b5b16fbc1df9--ricecare-ai.netlify.app/" }
+        { label: "💻 Website", url: "https://icekung11.github.io/Rice-Care-AI/" }
       ]
     },
      {
@@ -193,7 +193,7 @@ const projects = {
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") },
-        { label: "💻 เว็บไซต์", url: "https://agent-6ad3845ceb92b5b16fbc1df9--ricecare-ai.netlify.app/" }
+        { label: "💻 เว็บไซต์", url: "https://icekung11.github.io/Rice-Care-AI/" }
       ]
     },
        {
