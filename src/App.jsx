@@ -1,13 +1,14 @@
 // src/App.jsx
 import { useState, useEffect } from "react";
 import { 
-  FaJava, FaPython, FaLinux, FaNetworkWired, FaReact, 
+  FaJava, FaPython, FaLinux, FaReact, 
   FaGithub, FaInstagram, FaPhoneAlt, FaFolderPlus,
   FaAward, FaGraduationCap, FaArrowUp, FaTimes, FaExpand,
   FaCheckCircle, FaChevronRight, FaTerminal
 } from 'react-icons/fa';
 import { 
-  SiTailwindcss, SiJavascript, SiMaildotru 
+  SiTailwindcss, SiJavascript, SiMaildotru, SiNodedotjs, SiNextdotjs,
+  SiC, SiCplusplus
 } from 'react-icons/si';
 import { 
   GiCpu, GiCircuitry 
@@ -33,7 +34,6 @@ const skillCategories = [
     title: "Core & Systems Engineering",
     list: [
       { name: "Linux Systems", icon: <FaLinux className="text-[#fdb514]" />, glowColor: "group-hover:border-[#fdb514]/60 group-hover:shadow-[#fdb514]/20" },
-      { name: "Networking", icon: <FaNetworkWired className="text-[#0052cc]" />, glowColor: "group-hover:border-[#0052cc]/60 group-hover:shadow-[#0052cc]/20" },
       { name: "Digital Logic Design", icon: <GiCpu className="text-[#a855f7]" />, glowColor: "group-hover:border-[#a855f7]/60 group-hover:shadow-[#a855f7]/20" },
       { name: "Fundamentals of Electronics", icon: <GiCircuitry className="text-[#ef4444]" />, glowColor: "group-hover:border-[#ef4444]/60 group-hover:shadow-[#ef4444]/20" },
     ]
@@ -44,7 +44,11 @@ const skillCategories = [
       { name: "Java", icon: <FaJava className="text-[#f89820]" />, glowColor: "group-hover:border-[#f89820]/60 group-hover:shadow-[#f89820]/20" },
       { name: "Python", icon: <FaPython className="text-[#3776ab]" />, glowColor: "group-hover:border-[#3776ab]/60 group-hover:shadow-[#3776ab]/20" },
       { name: "JavaScript", icon: <SiJavascript className="text-[#f7df1e]" />, glowColor: "group-hover:border-[#f7df1e]/60 group-hover:shadow-[#f7df1e]/20" },
+      { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" />, glowColor: "group-hover:border-[#339933]/60 group-hover:shadow-[#339933]/20" },
+      { name: "Next.js", icon: <SiNextdotjs className="text-[#71717a]" />, glowColor: "group-hover:border-[#71717a]/60 group-hover:shadow-[#71717a]/20" },
       { name: "React", icon: <FaReact className="text-[#61dafb]" />, glowColor: "group-hover:border-[#61dafb]/60 group-hover:shadow-[#61dafb]/20" },
+      { name: "C", icon: <SiC className="text-[#00599c]" />, glowColor: "group-hover:border-[#00599c]/60 group-hover:shadow-[#00599c]/20" },
+      { name: "C++", icon: <SiCplusplus className="text-[#00599c]" />, glowColor: "group-hover:border-[#00599c]/60 group-hover:shadow-[#00599c]/20" },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06b6d4]" />, glowColor: "group-hover:border-[#06b6d4]/60 group-hover:shadow-[#06b6d4]/20" },
     ]
   }
@@ -53,7 +57,6 @@ const skillCategories = [
 const skillNames = {
   en: {
     "Linux Systems": "Linux Systems",
-    "Networking": "Networking",
     "Digital Logic Design": "Digital Logic Design",
     "Fundamentals of Electronics": "Fundamentals of Electronics",
     "Java": "Java",
@@ -64,7 +67,6 @@ const skillNames = {
   },
   th: {
     "Linux Systems": "ระบบปฏิบัติการ Linux",
-    "Networking": "ระบบเครือข่าย",
     "Digital Logic Design": "การออกแบบตรรกะดิจิทัล",
     "Fundamentals of Electronics": "พื้นฐานอิเล็กทรอนิกส์",
     "Java": "ภาษา Java",
@@ -209,7 +211,7 @@ const projects = {
       tags: ["Next.js", "TypeScript", "Web App"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("retail_report.pdf") },
-        { label: "💻 เว็บไซต์", url: "https://retail-trackerr.netlify.app/" }
+        { label: "💻 เว็บไซต์", url: "https://icekung11.github.io/Retail_Tracker/" }
       ]
     },
        {
@@ -282,7 +284,7 @@ const certificates = {
     },
      {
       id: "cert-Ctf",
-      title: "the NCSA × Cisco CTF Thailand Tournament 2026",
+      title: "The NCSA × Cisco CTF Thailand Tournament 2026",
       issuer: "NCSA, Cisco",
       date: "2026",
       image: baseAsset("ctf.png"),
@@ -353,7 +355,7 @@ const certificates = {
       title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Python",
       issuer: "HackerRank",
       date: "2025",
-      image: baseAsset("cert_python.jpg"),
+      image: baseAsset("python.jpg"),
       desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Python ในระดับพื้นฐาน",
       tags: ["Python", "Programming"]
     },
@@ -362,16 +364,16 @@ const certificates = {
       title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go",
       issuer: "HackerRank",
       date: "2025",
-      image: baseAsset("cert_go.jpg"),
+      image: baseAsset("go.jpg"),
       desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go ในระดับพื้นฐาน",
       tags: ["Go", "Programming"]
     },
       {
       id: "cert-Ctf",
-      title: "the NCSA × Cisco CTF Thailand Tournament 2025",
+      title: "The NCSA × Cisco CTF Thailand Tournament 2025",
       issuer: "National Cyber Security Agency of Thailand, Cisco",
       date: "2025",
-      image: baseAsset("cert_ctf.jpg"),
+      image: baseAsset("ctf.jpg"),
       desc: "ใบรับรองการผ่านการแข่งขัน CTF ระหว่างประเทศ 2025",
       tags: ["Cybersecurity", "CTF", "Competitions"]
     }
