@@ -124,7 +124,7 @@ const projects = {
       tags: ["TensorFlow", "Keras", "Python", "FastAPI", "JavaScript", "HTML", "Css"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("RiceCare_AI_Project_report.pdf") },
-        { label: "💻 Website", url: "https://ricecare-ai.netlify.app/" }
+        { label: "💻 Website", url: "https://agent-6ad3845ceb92b5b16fbc1df9--ricecare-ai.netlify.app/" }
       ]
     },
      {
@@ -134,7 +134,7 @@ const projects = {
       tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("retail_report.pdf") },
-        { label: "💻 Website", url: "https://retail-trackerr.netlify.app/" }
+        { label: "💻 Website", url: "https://icekung11.github.io/Retail_Tracker/" }
       ]
     },
     {
