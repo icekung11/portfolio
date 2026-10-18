@@ -14,14 +14,6 @@ import {
   GiCpu, GiCircuitry 
 } from 'react-icons/gi';
 
-// Firebase Imports
-import { db } from "./firebase";
-import { 
-  collection, 
-  addDoc, 
-  serverTimestamp 
-} from "firebase/firestore";
-
 // Helper for GitHub Pages asset resolution
 const baseAsset = (path) => `${import.meta.env.BASE_URL}${path.startsWith('/') ? path.slice(1) : path}`;
 
@@ -355,7 +347,7 @@ const certificates = {
       title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Python",
       issuer: "HackerRank",
       date: "2025",
-      image: baseAsset("python.jpg"),
+      image: baseAsset("python.png"),
       desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Python ในระดับพื้นฐาน",
       tags: ["Python", "Programming"]
     },
@@ -364,7 +356,7 @@ const certificates = {
       title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go",
       issuer: "HackerRank",
       date: "2025",
-      image: baseAsset("go.jpg"),
+      image: baseAsset("go.png"),
       desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go ในระดับพื้นฐาน",
       tags: ["Go", "Programming"]
     },
@@ -373,7 +365,7 @@ const certificates = {
       title: "The NCSA × Cisco CTF Thailand Tournament 2025",
       issuer: "National Cyber Security Agency of Thailand, Cisco",
       date: "2025",
-      image: baseAsset("ctf.jpg"),
+      image: baseAsset("ctf.png"),
       desc: "ใบรับรองการผ่านการแข่งขัน CTF ระหว่างประเทศ 2025",
       tags: ["Cybersecurity", "CTF", "Competitions"]
     }
@@ -665,6 +657,10 @@ export default function App() {
   async function sendMessage() {
     if (!message.trim()) return;
     try {
+      const [{ db }, { collection, addDoc, serverTimestamp }] = await Promise.all([
+        import("./firebase"),
+        import("firebase/firestore"),
+      ]);
       await addDoc(collection(db, "comments"), {
         name: name || "Anonymous",
         message: message,
