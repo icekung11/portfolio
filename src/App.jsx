@@ -242,7 +242,7 @@ const certificates = {
       id: "cert-Ethical Hacker",
       title: "Ethical Hacking & Cybersecurity",
       issuer: "Cisco Networking Academy program and National Cyber Security Agency",
-      date: "2025",
+      date: "2026",
       image: baseAsset("Ethical_Hacker.png"),
       desc: "Course completion in ethical hacking techniques and cybersecurity principles.",
       tags: ["Cybersecurity", "Ethical Hacking"]
@@ -269,7 +269,7 @@ const certificates = {
       id: "cert-go",
       title: "Go programming assessment",
       issuer: "HackerRank",
-      date: "2025",
+      date: "2026",
       image: baseAsset("go.png"),
       desc: "Earned a Go programming certificate through a basic-level assessment.",
       tags: ["Go", "Programming"]
@@ -319,7 +319,7 @@ const certificates = {
       id: "cert-Foundation AI (theory)",
       title: "พื้นฐานปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง (ทฤษฎี)",
       issuer: "สมาคมปัญญาประดิษฐ์แห่งประเทศไทย",
-      date: "2025",
+      date: "2026",
       image: baseAsset("Ai_theory.png"),
       desc: "การผ่านหลักสูตรรากฐานปัญญาประดิษฐ์และการเรียนรู้ของเครื่อง รวมถึงทฤษฎีและการประยุกต์ใช้งาน",
       tags: ["ปัญญาประดิษฐ์", "การเรียนรู้ของเครื่อง", "ทฤษฎี", "การประมวลผลภาพ"]
@@ -328,7 +328,7 @@ const certificates = {
       id: "cert-Ethical Hacker",
       title: "นักเจาะระบบเชิงจริยธรรมและความปลอดภัยไซเบอร์",
       issuer: "Cisco Networking Academy และ สำนักงานความมั่นคงปลอดภัยไซเบอร์แห่งชาติ",
-      date: "2025",
+      date: "2026",
       image: baseAsset("Ethical_Hacker.png"),
       desc: "ใบรับรองการผ่านหลักสูตรเทคนิคการเจาะระบบเชิงจริยธรรมและหลักการรักษาความปลอดภัยไซเบอร์",
       tags: ["Cybersecurity", "Ethical Hacking"]
@@ -355,18 +355,18 @@ const certificates = {
       id: "cert-go",
       title: "การประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go",
       issuer: "HackerRank",
-      date: "2025",
+      date: "2026",
       image: baseAsset("go.png"),
       desc: "ใบรับรองการผ่านการประเมินความสามารถด้านการเขียนโปรแกรมภาษา Go ในระดับพื้นฐาน",
       tags: ["Go", "Programming"]
     },
       {
       id: "cert-Ctf",
-      title: "The NCSA × Cisco CTF Thailand Tournament 2025",
+      title: "The NCSA × Cisco CTF Thailand Tournament 2026",
       issuer: "National Cyber Security Agency of Thailand, Cisco",
-      date: "2025",
+      date: "2026",
       image: baseAsset("ctf.png"),
-      desc: "ใบรับรองการผ่านการแข่งขัน CTF ระหว่างประเทศ 2025",
+      desc: "ใบรับรองการผ่านการแข่งขัน CTF Thailand Tournament 2026",
       tags: ["Cybersecurity", "CTF", "Competitions"]
     }
     /* Stored for future release:
