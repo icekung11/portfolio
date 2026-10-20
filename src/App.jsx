@@ -96,8 +96,9 @@ const projects = {
       image: baseAsset("Kijhub.png"),
       tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
       links: [
-        { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") }
-      ]
+        { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") },
+        { label: "💻 app (.apk)", url: baseAsset("app_release.apk") }
+      ] 
     },
      {
       title: "Typing Application",
@@ -173,7 +174,8 @@ const projects = {
       image: baseAsset("Kijhub.png"),
       tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
       links: [
-        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") }
+        { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") },
+        { label: "💻 app (.apk)", url: baseAsset("app_release.apk") }
       ]
     },
     {
