@@ -97,7 +97,7 @@ const projects = {
       tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
       links: [
         { label: "📄 Full Report (PDF)", url: baseAsset("Kijhub_report.pdf") },
-        { label: "💻 app (.apk)", url: baseAsset("app_release.apk") }
+        { label: "💻 app (.apk)", url: baseAsset("app-release.apk") }
       ] 
     },
      {
@@ -175,7 +175,7 @@ const projects = {
       tags: ["Dart", "Flutter", "Kafka", "Mobile App", "Go"],
       links: [
         { label: "📄 รายงานฉบับเต็ม (PDF)", url: baseAsset("Kijhub_report.pdf") },
-        { label: "💻 app (.apk)", url: baseAsset("app_release.apk") }
+        { label: "💻 app (.apk)", url: baseAsset("app-release.apk") }
       ]
     },
     {
