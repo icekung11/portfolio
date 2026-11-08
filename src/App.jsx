@@ -980,8 +980,8 @@ export default function App() {
               onClick={() => setSelectedProjectIndex(index)}
               className={
                 darkMode
-                  ? "min-w-[290px] md:min-w-[380px] bg-zinc-900/40 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start group shadow-xl"
-                  : "min-w-[290px] md:min-w-[380px] bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-400 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start shadow-sm group hover:shadow-md"
+                  ? "min-w-[290px] bg-zinc-900/40 border border-zinc-800 rounded-2xl p-5 hover:border-zinc-700 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start group shadow-xl"
+                  : "min-w-[290px] bg-white border border-zinc-200 rounded-2xl p-5 hover:border-zinc-400 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col justify-between snap-start shadow-sm group hover:shadow-md"
               }
             >
               <div>
@@ -1059,7 +1059,7 @@ export default function App() {
             <div 
               key={cert.id}
               onClick={() => setSelectedCertIndex(index)}
-              className={`min-w-[270px] md:min-w-[320px] rounded-2xl border overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between snap-start hover:-translate-y-1.5 ${
+              className={`min-w-[280px] rounded-2xl border overflow-hidden transition-all duration-300 group cursor-pointer flex flex-col justify-between snap-start hover:-translate-y-1.5 ${
                 darkMode 
                   ? "bg-zinc-900/40 border-zinc-800 hover:border-zinc-700 hover:shadow-xl" 
                   : "bg-white border-zinc-200 shadow-sm hover:border-zinc-400 hover:shadow-md"
